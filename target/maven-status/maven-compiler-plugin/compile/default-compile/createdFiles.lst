@@ -1,0 +1,5 @@
+com/mycompany/gymadmin/MainApp.class
+com/mycompany/controllers/LoginController.class
+com/mycompany/controllers/SplashController.class
+com/mycompany/persistencia/Conexion.class
+com/mycompany/gymadmin/Stages.class
