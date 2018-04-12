@@ -1,14 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
+
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXPasswordField?>
 <?import com.jfoenix.controls.JFXTextField?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" fx:controller="com.mycompany.controllers.LoginController"  
-            prefHeight="384.0" prefWidth="509.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="509.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.LoginController">
    <children>
       <AnchorPane prefHeight="55.0" prefWidth="509.0" style="-fx-background-color: #044a68;">
          <children>
@@ -19,24 +21,28 @@
             </Label>
          </children>
       </AnchorPane>
+      <JFXTextField fx:id="user" focusColor="#044a68" labelFloat="true" layoutX="187.0" layoutY="173.0" prefHeight="26.0" prefWidth="184.0" promptText="Correo electronico" />
+      <JFXPasswordField fx:id="pass" focusColor="#044a68" labelFloat="true" layoutX="183.0" layoutY="229.0" prefHeight="26.0" prefWidth="184.0" promptText="Contraseña" />
       <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="135.0" layoutY="165.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/images/users.png" />
          </image>
       </ImageView>
+      <Label layoutX="179.0" layoutY="277.0" text="¿Olvido su contraseña?" />
       <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="135.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/images/padlock.png" />
          </image>
       </ImageView>
-      <JFXTextField focusColor="#044a68" labelFloat="true" layoutX="187.0" layoutY="172.0" prefHeight="26.0" prefWidth="184.0" promptText="Usuario" />
-      <JFXTextField focusColor="#044a68" labelFloat="true" layoutX="185.0" layoutY="229.0" prefHeight="26.0" prefWidth="184.0" promptText="Contraseña" />
-      <Label layoutX="179.0" layoutY="277.0" text="¿Olvido su contraseña?" />
-      <JFXButton buttonType="RAISED" layoutX="148.0" layoutY="313.0" prefHeight="44.0" prefWidth="225.0" style="-fx-background-color: #044a68;" text="Ingresar" textFill="WHITE" />
+      <JFXButton fx:id="ingresar" alignment="CENTER" contentDisplay="RIGHT" layoutX="148.0" layoutY="312.0" prefHeight="44.0" prefWidth="225.0" style="-fx-background-color: #044a68; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Ingresar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></JFXButton>
       <ImageView fitHeight="155.0" fitWidth="165.0" layoutX="178.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/images/Logo.png" />
          </image>
       </ImageView>
+      <ProgressIndicator fx:id="prog" layoutX="331.0" layoutY="316.0" prefHeight="36.0" prefWidth="29.0" visible="false" />
    </children>
 </AnchorPane>

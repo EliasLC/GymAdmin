@@ -1,0 +1,320 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTabPane?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="674.0" prefWidth="1170.0" stylesheets="@/styles/TabStyles.css" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.MainController">
+   <children>
+      <JFXTabPane layoutY="138.0" prefHeight="564.0" prefWidth="1170.0" rotateGraphic="true">
+         <tabs>
+            <Tab text="Suscripciones">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="988.0" />
+              </content>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/id-card.png" />
+                     </image></ImageView>
+               </graphic>
+               
+            </Tab>
+            <Tab text="Suscriptores">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="868.0" />
+              </content>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/userBlanco.png" />
+                     </image></ImageView>
+               </graphic>
+            </Tab>
+            <Tab text="Recepcionista">
+                  <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0" />
+              </content>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/reception.png" />
+                     </image></ImageView>
+               </graphic>
+            </Tab>
+            <Tab text="Instructores">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="753.0">
+                     <children>
+                        <TableView layoutX="364.0" layoutY="69.0" prefHeight="391.0" prefWidth="785.0">
+                           <columns>
+                              <TableColumn prefWidth="210.0" text="Nombre" />
+                              <TableColumn prefWidth="142.0" text="Tel Movil" />
+                              <TableColumn prefWidth="142.0" text="Tel Fijo" />
+                              <TableColumn prefWidth="290.0" text="Correo" />
+                           </columns>
+                        </TableView>
+                        <JFXTextField layoutX="373.0" layoutY="24.0" promptText="Nombre Instructor" />
+                        <JFXButton layoutX="675.0" layoutY="15.0" prefHeight="44.0" prefWidth="164.0" style="-fx-background-color: #35A1CD;" text="Buscar Todo" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/human-resources.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="535.0" layoutY="15.0" prefHeight="43.0" prefWidth="129.0" style="-fx-background-color: #05bf65;" text="Buscar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/loupe.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="851.0" layoutY="9.0" prefHeight="52.0" prefWidth="137.0" style="-fx-background-color: #d83529;" text="Eliminar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/rubbish-bin.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="930.0" layoutY="469.0" prefHeight="52.0" prefWidth="219.0" style="-fx-background-color: #ffd70d;" text="Mas Informacion" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/plus.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <VBox layoutX="28.0" layoutY="15.0" prefHeight="506.0" prefWidth="272.0">
+                           <children>
+                              <JFXTextField labelFloat="true" prefHeight="26.0" prefWidth="145.0" promptText="Nombre" />
+                              <JFXTextField labelFloat="true" promptText="Apellido Paterno" />
+                              <JFXTextField labelFloat="true" promptText="Apellido Materno" />
+                              <JFXTextField labelFloat="true" promptText="Telefono Movil" />
+                              <JFXTextField labelFloat="true" promptText="Telefono Fijo" />
+                              <Label text="Fecha de nacimiento">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <HBox prefHeight="47.0" prefWidth="252.0">
+                                 <children>
+                                    <JFXComboBox labelFloat="true" promptText="Dia" />
+                                    <JFXComboBox labelFloat="true" promptText="Mes" />
+                                    <JFXComboBox labelFloat="true" promptText="Año" />
+                                 </children>
+                              </HBox>
+                              <JFXTextField labelFloat="true" promptText="Correo Electronico" />
+                           </children></VBox>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/fitness.png" />
+                     </image></ImageView>
+               </graphic>
+            </Tab>
+            <Tab text="Administradores">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1148.0">
+                     <children>
+                        <Pane layoutX="14.0" layoutY="24.0" prefHeight="484.0" prefWidth="343.0" style="-fx-background-color: rgb(180,180,180,0.4); -fx-border-radius: 30;">
+                           <children>
+                              <JFXButton layoutX="87.0" layoutY="401.0" prefHeight="52.0" prefWidth="148.0" style="-fx-background-color: #395368;" text="Agregar" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/add-user.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXTextField labelFloat="true" layoutX="93.0" layoutY="28.0" promptText="Nombre" />
+                              <JFXTextField labelFloat="true" layoutX="93.0" layoutY="77.0" promptText="Apellido Paterno" />
+                              <JFXTextField labelFloat="true" layoutX="93.0" layoutY="124.0" promptText="Apellido Materno" />
+                              <JFXTextField labelFloat="true" layoutX="93.0" layoutY="168.0" promptText="Telefono Movil" />
+                              <JFXTextField labelFloat="true" layoutX="93.0" layoutY="213.0" promptText="Telefono Fijo" />
+                              <Label layoutX="88.0" layoutY="258.0" text="Fecha de nacimiento">
+                                 <font>
+                                    <Font size="16.0" />
+                                 </font>
+                              </Label>
+                              <JFXComboBox labelFloat="true" layoutX="62.0" layoutY="290.0" promptText="Dia" />
+                              <JFXComboBox labelFloat="true" layoutX="137.0" layoutY="290.0" promptText="Mes" />
+                              <JFXComboBox labelFloat="true" layoutX="219.0" layoutY="290.0" promptText="Año" />
+                              <JFXTextField labelFloat="true" layoutX="93.0" layoutY="338.0" promptText="Correo Electronico" />
+                           </children>
+                        </Pane>
+                        <TableView layoutX="371.0" layoutY="70.0" prefHeight="391.0" prefWidth="785.0">
+                          <columns>
+                            <TableColumn prefWidth="210.0" text="Nombre" />
+                              <TableColumn prefWidth="142.0" text="Tel Movil" />
+                              <TableColumn prefWidth="142.0" text="Tel Fijo" />
+                              <TableColumn prefWidth="290.0" text="Correo" />
+                          </columns>
+                        </TableView>
+                        <JFXButton layoutX="873.0" layoutY="8.0" prefHeight="52.0" prefWidth="137.0" style="-fx-background-color: #d83529;" text="Eliminar" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/rubbish-bin.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="18.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXTextField layoutX="453.0" layoutY="21.0" promptText="Nombre Administrador" />
+                        <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="622.0" layoutY="12.0" prefHeight="44.0" prefWidth="46.0" style="-fx-background-color: #05bf65; -fx-background-radius: 5em; -fx-border-radius: 5em;" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/loupe.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton layoutX="696.0" layoutY="12.0" prefHeight="44.0" prefWidth="164.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;" text="Buscar Todo" textFill="WHITE">
+                           <graphic>
+                              <ImageView fitHeight="32.0" fitWidth="32.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/human-resources.png" />
+                                 </image>
+                              </ImageView>
+                           </graphic>
+                           <font>
+                              <Font size="16.0" />
+                           </font></JFXButton>
+                        <ProgressIndicator layoutX="1066.0" layoutY="18.0" prefHeight="41.0" prefWidth="50.0" />
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/manager.png" />
+                     </image></ImageView>
+               </graphic>
+            </Tab>
+            <Tab text="Informacion">
+              <content>
+                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="1100.0">
+                     <children>
+                        <VBox layoutY="-2.0" prefHeight="596.0" prefWidth="174.0" style="-fx-background-color: #395368;">
+                           <children>
+                              <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="5.0" stroke="WHITE" strokeType="INSIDE" width="174.0" />
+                              <Label text="Modificar" textFill="WHITE">
+                                 <font>
+                                    <Font size="24.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <VBox.margin>
+                                    <Insets left="32.0" />
+                                 </VBox.margin>
+                              </Label>
+                              <Line endX="71.0" startX="-100.0" stroke="WHITE" />
+                              <JFXButton fx:id="modInfo" prefHeight="53.0" prefWidth="169.0" style="-fx-background-color: #395368;" text=" Personal" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/update.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="modInfo1" prefHeight="53.0" prefWidth="170.0" style="-fx-background-color: #395368;" text="Contraseña" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/update.png" />
+                                       </image>
+                                       <viewport>
+                                          <Rectangle2D />
+                                       </viewport>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font>
+                              </JFXButton>
+                           </children></VBox>
+                     </children></AnchorPane>
+              </content>
+               <graphic>
+                  <ImageView fitHeight="35.0" fitWidth="35.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/consultant.png" />
+                     </image></ImageView>
+               </graphic>
+            </Tab>
+         </tabs>
+      </JFXTabPane>
+      <AnchorPane layoutY="-2.0" prefHeight="140.0" prefWidth="1170.0" style="-fx-background-color: #395368;">
+         <children>
+            <Label layoutX="883.0" layoutY="36.0" prefHeight="26.0" prefWidth="252.0" text="Administrador: Nombre de usuario" textFill="WHITE">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="994.0" layoutY="77.0" text="Time: 2:32 PM" textFill="WHITE">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <ImageView fitHeight="131.0" fitWidth="129.0" layoutX="26.0" layoutY="5.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/Logo.png" />
+               </image></ImageView>
+         </children></AnchorPane>
+   </children>
+</AnchorPane>

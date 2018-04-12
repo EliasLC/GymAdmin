@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="2.1" xmlns="http://xmlns.jcp.org/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+  <persistence-unit name="admin" transaction-type="RESOURCE_LOCAL">
+    <provider>org.hibernate.ejb.HibernatePersistence</provider>
+    <class>com.mycompany.persistencia.Instructor</class>
+    <class>com.mycompany.persistencia.RegimenInstructor</class>
+    <class>com.mycompany.persistencia.RutinaInstructor</class>
+    <class>com.mycompany.persistencia.Suscripcion</class>
+    <class>com.mycompany.persistencia.Recepcionista</class>
+    <class>com.mycompany.persistencia.Administrador</class>
+    <class>com.mycompany.persistencia.TransaccionesRecep</class>
+    <class>com.mycompany.persistencia.TipoSuc</class>
+    <class>com.mycompany.persistencia.RutinaSus</class>
+    <class>com.mycompany.persistencia.MensajeSusIns</class>
+    <class>com.mycompany.persistencia.Suscriptor</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://189.252.55.16:3306/PROYECTON?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="ELIAS"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="E15380201"/>
+      <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>
+    </properties>
+  </persistence-unit>
+</persistence>

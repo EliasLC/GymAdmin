@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.Background;
 import javafx.util.Duration;
 
 public class SplashController implements Initializable {
@@ -22,6 +23,7 @@ public class SplashController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Pane.setBackground(Background.EMPTY);
         ScaleTransition st = new ScaleTransition(Duration.seconds(3),logo);
         st.setToX(4); st.setToY(4); st.play();
     }    

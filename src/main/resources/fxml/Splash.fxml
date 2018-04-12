@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.ProgressIndicator?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
@@ -11,5 +12,6 @@
               <Image url="@/images/Logo.png" />
           </image>
       </ImageView>
+      <ProgressIndicator layoutX="260.0" layoutY="342.0" style= "-fx-progress-color: #35A1CD;"/>
     </children>
 </AnchorPane>
