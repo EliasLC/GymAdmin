@@ -15,15 +15,14 @@ public class Conexion extends Task<Void> {
     @Override
     protected Void call() {
         
-        try {
+            try {
             DataBase.getEMF();
-        } catch (Exception ex) {
+            } catch (Exception ex) {
             JOptionPane.showMessageDialog(null,"Imposible Conextarse Con El Servidor, Verifique Su Conexion A Internet","Error De Conexion", JOptionPane.ERROR_MESSAGE);
             Logger.getLogger(Conexion.class.getName()).log(Level.SEVERE, null, ex);
             System.exit(0);
-        }
-           
-        
+            }
+            
         Platform.runLater(()->{
             MainApp.closeSplash();
             Stages.createLogIn();

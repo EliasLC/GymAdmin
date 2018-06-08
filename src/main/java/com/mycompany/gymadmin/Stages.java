@@ -8,6 +8,7 @@ import java.util.logging.Logger;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 
@@ -29,6 +30,7 @@ public class Stages {
               login.setResizable(false);
               login.setTitle("Bienvenido A Monitor GYM");
               login.centerOnScreen();
+              login.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/Logo.png")));
               valCerrar(login);
               login.show();
           } catch (IOException ex) {
@@ -51,6 +53,7 @@ public class Stages {
             cuerpo.setResizable(false);
             cuerpo.setTitle("Administrador");
             cuerpo.centerOnScreen();
+            cuerpo.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/Logo.png")));
             valCerrar(cuerpo);
             cuerpo.show();
         }catch(IOException ex){

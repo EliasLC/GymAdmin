@@ -9,6 +9,7 @@ import static javafx.application.Application.launch;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.image.Image;
 import javafx.scene.paint.Color;
 import javafx.stage.Stage;
 import javafx.stage.StageStyle;
@@ -30,6 +31,7 @@ public class MainApp extends Application {
             main.initStyle(StageStyle.TRANSPARENT);
             main.setScene(scene);
             main.show();
+            main.getIcons().add(new Image(MainApp.class.getResourceAsStream("/images/Logo.png")));
             Thread t = new Thread(new Conexion());
             t.start();
         } catch (IOException ex) {

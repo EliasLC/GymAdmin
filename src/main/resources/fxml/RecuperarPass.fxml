@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="root" prefHeight="374.0" prefWidth="509.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.RecuperarPassController">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="509.0" style="-fx-background-color: #044a68;">
+         <children>
+            <Label layoutX="122.0" layoutY="10.0" prefHeight="36.0" prefWidth="272.0" text="Recuperar Contraseña" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <JFXTextField fx:id="email" labelFloat="true" layoutX="143.0" layoutY="231.0" prefHeight="26.0" prefWidth="226.0" promptText="Correo Electronico" />
+      <JFXButton fx:id="cancelar" layoutX="115.0" layoutY="304.0" prefHeight="48.0" prefWidth="138.0" style="-fx-background-color: #044a68; -fx-background-radius: 5em;" text="Cancelar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font></JFXButton>
+      <ProgressIndicator fx:id="indicador" layoutX="227.0" layoutY="229.0" prefHeight="55.0" prefWidth="58.0" visible="false" />
+      <Label layoutX="62.0" layoutY="149.0" text="Introduzca su correo electronico y le enviaremos un">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <Label layoutX="62.0" layoutY="168.0" text="correo con su contraseña">
+         <font>
+            <Font size="15.0" />
+         </font>
+      </Label>
+      <ImageView fitHeight="94.0" fitWidth="139.0" layoutX="206.0" layoutY="55.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/message.png" />
+         </image>
+      </ImageView>
+      <JFXButton fx:id="enviar" layoutX="258.0" layoutY="304.0" prefHeight="48.0" prefWidth="138.0" style="-fx-background-color: #044a68; -fx-background-radius: 5em;" text="Enviar" textFill="WHITE">
+         <font>
+            <Font size="16.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

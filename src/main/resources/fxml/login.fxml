@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="370.0" prefWidth="509.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/8.0.141" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.LoginController">
+<AnchorPane fx:id="root" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="374.0" prefWidth="509.0" style="-fx-background-color: #e6e6e6;" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.LoginController">
    <children>
       <AnchorPane prefHeight="55.0" prefWidth="509.0" style="-fx-background-color: #044a68;">
          <children>
@@ -28,7 +28,7 @@
             <Image url="@/images/users.png" />
          </image>
       </ImageView>
-      <Label layoutX="179.0" layoutY="277.0" text="¿Olvido su contraseña?" />
+      <Label fx:id="olvidopass" layoutX="179.0" layoutY="277.0" text="¿Olvido su contraseña?" />
       <ImageView fitHeight="44.0" fitWidth="45.0" layoutX="135.0" layoutY="220.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@/images/padlock.png" />

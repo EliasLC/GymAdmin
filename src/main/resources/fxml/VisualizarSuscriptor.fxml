@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.effect.Blend?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+
+
+<AnchorPane id="AnchorPane" prefHeight="523.0" prefWidth="996.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172" fx:controller="com.mycompany.controllers.VisualizarSuscriptorController">
+   <children>
+      <TableView layoutX="23.0" layoutY="104.0" prefHeight="397.0" prefWidth="951.0">
+        <columns>
+          <TableColumn prefWidth="186.0" text="Nombre" />
+            <TableColumn prefWidth="55.0" text="Edad" />
+            <TableColumn prefWidth="195.0" text="Email" />
+            <TableColumn prefWidth="140.0" text="Colonia" />
+            <TableColumn prefWidth="42.0" text="M#" />
+            <TableColumn prefWidth="35.0" text="L#" />
+            <TableColumn prefWidth="158.0" text="Tipo Suscripcion" />
+            <TableColumn prefWidth="139.0" text="Vencimiento" />
+        </columns>
+      </TableView>
+      <Pane layoutX="179.0" layoutY="21.0" prefHeight="69.0" prefWidth="640.0" style="-fx-background-color: rgb(180,180,180,0.2); -fx-background-radius: 5em;">
+         <children>
+            <JFXTextField labelFloat="true" layoutX="164.0" layoutY="21.0" prefHeight="26.0" prefWidth="233.0" promptText="Nombre Suscriptor" />
+            <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="400.0" layoutY="15.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00af00; -fx-background-radius: 5em;" text="Button">
+               <graphic>
+                  <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@/images/loupe.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
+         </children>
+         <opaqueInsets>
+            <Insets />
+         </opaqueInsets>
+         <effect>
+            <Blend />
+         </effect>
+      </Pane>
+   </children>
+</AnchorPane>

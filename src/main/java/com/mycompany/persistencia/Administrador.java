@@ -6,7 +6,6 @@
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
-import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -16,12 +15,10 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
-import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -31,16 +28,16 @@ import javax.xml.bind.annotation.XmlTransient;
 @Table(name = "ADMINISTRADOR")
 @XmlRootElement
 @NamedQueries({
-    @NamedQuery(name = "Administrador.findAll", query = "SELECT a FROM Administrador a")
+    @NamedQuery(name = "Administrador.findAll", query = "SELECT a.admNom, a.admApat, a.admAmat, a.admTelm, a.admTelc, a.admEmail FROM Administrador a")
     , @NamedQuery(name = "Administrador.findByAdmId", query = "SELECT a FROM Administrador a WHERE a.admId = :admId")
     , @NamedQuery(name = "Administrador.findByAdmContra", query = "SELECT a FROM Administrador a WHERE a.admContra = :admContra")
+    , @NamedQuery(name = "Administrador.findByAdmEmail", query = "SELECT a.admContra FROM Administrador a WHERE a.admEmail = :admEmail")
     , @NamedQuery(name = "Administrador.findByAdmNom", query = "SELECT a FROM Administrador a WHERE a.admNom = :admNom")
     , @NamedQuery(name = "Administrador.findByAdmApat", query = "SELECT a FROM Administrador a WHERE a.admApat = :admApat")
     , @NamedQuery(name = "Administrador.findByAdmAmat", query = "SELECT a FROM Administrador a WHERE a.admAmat = :admAmat")
     , @NamedQuery(name = "Administrador.findByAdmFna", query = "SELECT a FROM Administrador a WHERE a.admFna = :admFna")
     , @NamedQuery(name = "Administrador.findByAdmTelm", query = "SELECT a FROM Administrador a WHERE a.admTelm = :admTelm")
     , @NamedQuery(name = "Administrador.findByAdmTelc", query = "SELECT a FROM Administrador a WHERE a.admTelc = :admTelc")
-    , @NamedQuery(name = "Administrador.findByAdmEmail", query = "SELECT a.admContra FROM Administrador a WHERE a.admEmail = :admEmail")
     , @NamedQuery(name = "Administrador.findByAdmEstado", query = "SELECT a FROM Administrador a WHERE a.admEstado = :admEstado")})
 public class Administrador implements Serializable {
 
@@ -65,7 +62,6 @@ public class Administrador implements Serializable {
     @Basic(optional = false)
     @Column(name = "ADM_AMAT")
     private String admAmat;
-    @Basic(optional = false)
     @Column(name = "ADM_FNA")
     @Temporal(TemporalType.DATE)
     private Date admFna;
@@ -75,8 +71,6 @@ public class Administrador implements Serializable {
     private String admTelc;
     @Column(name = "ADM_ESTADO")
     private String admEstado;
-    @OneToMany(mappedBy = "tsucAdmid")
-    private Collection<TipoSuc> tipoSucCollection;
 
     public Administrador() {
     }
@@ -85,14 +79,13 @@ public class Administrador implements Serializable {
         this.admId = admId;
     }
 
-    public Administrador(Integer admId, String admContra, String admEmail, String admNom, String admApat, String admAmat, Date admFna) {
+    public Administrador(Integer admId, String admContra, String admEmail, String admNom, String admApat, String admAmat) {
         this.admId = admId;
         this.admContra = admContra;
         this.admEmail = admEmail;
         this.admNom = admNom;
         this.admApat = admApat;
         this.admAmat = admAmat;
-        this.admFna = admFna;
     }
 
     public Integer getAdmId() {
@@ -173,15 +166,6 @@ public class Administrador implements Serializable {
 
     public void setAdmEstado(String admEstado) {
         this.admEstado = admEstado;
-    }
-
-    @XmlTransient
-    public Collection<TipoSuc> getTipoSucCollection() {
-        return tipoSucCollection;
-    }
-
-    public void setTipoSucCollection(Collection<TipoSuc> tipoSucCollection) {
-        this.tipoSucCollection = tipoSucCollection;
     }
 
     @Override
