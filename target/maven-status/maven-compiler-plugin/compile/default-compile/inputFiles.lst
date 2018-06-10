@@ -27,10 +27,12 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/VisualizarSuscriptorController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/EstadisticasAdminController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Cambio.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/AbrirVentana.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/MensajeSusIns.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RutinaSus.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/SuscriptoresEstadisticasController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaAdministradores.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/ModIAdm.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/DataBase.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/MainController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/Ingresar.java

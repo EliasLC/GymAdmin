@@ -5,20 +5,16 @@ package com.mycompany.interacciondb;
  * @author elias
  */
 public class Ingreso {
-
-    /**
-     * @return the email
-     */
-   
-    
+  
     private String admNom,email,admApat,admAmat,admContra;
-    private Integer id;
+    private Integer id,status;
     public Ingreso(){
     
     }
-    public Ingreso(Integer id,String email, String admNom, String admApat, String admAmat, String admContra){
+    public Ingreso(Integer id,String email, String admNom, String admApat, String admAmat, String admContra
+    ,int status){
         this.admAmat= admAmat; this.admApat= admApat; this.admContra= admContra; this.admNom= admNom;
-        this.id=id; this.email= email;
+        this.id=id; this.email= email; this.status= status;
     }
     
     /**
@@ -106,4 +102,19 @@ public class Ingreso {
     public void setId(Integer id) {
         this.id = id;
     }
+    
+     /**
+     * @return the status
+     */
+    public Integer getStatus() {
+        return status;
+    }
+
+    /**
+     * @param status the status to set
+     */
+    public void setStatus(Integer status) {
+        this.status = status;
+    }
+
 }

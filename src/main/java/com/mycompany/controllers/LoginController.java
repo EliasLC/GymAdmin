@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.Alertas;
+import com.mycompany.gymadmin.Datos;
 import com.mycompany.gymadmin.Stages;
 import com.mycompany.interacciondb.Ingresar;
 import java.io.IOException;
@@ -71,6 +72,11 @@ public class LoginController implements Initializable {
                     case 2:
                         Alertas.error("Datos Errones", "Verifique sus datos", "Contraseña Incorrecta");
                         break;
+                    case 3: 
+                        Platform.runLater(()->{
+                            Stages.cerrarLogIn();
+                            Stages.createCuerpo();
+                        }); break;
                     default:
                         break;
                 }

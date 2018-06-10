@@ -27,16 +27,11 @@ import javax.xml.bind.annotation.XmlTransient;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrador.findAll", query = "SELECT a.admNom, a.admApat, a.admAmat, a.admTelm, a.admTelc, a.admEmail FROM Administrador a")
-    , @NamedQuery(name = "Administrador.findIn", query = "SELECT NEW com.mycompany.interacciondb.Ingreso (a.admId,a.admEmail,a.admNom, a.admApat, a.admAmat, a.admContra) FROM Administrador a WHERE a.admEmail = :user")    
+    , @NamedQuery(name = "Administrador.findIn", query = "SELECT NEW com.mycompany.interacciondb.Ingreso (a.admId,a.admEmail,a.admNom, a.admApat, a.admAmat, a.admContra,a.admStatus) FROM Administrador a WHERE a.admEmail = :user")    
     , @NamedQuery(name = "Administrador.findByAdmId", query = "SELECT a FROM Administrador a WHERE a.admId = :admId")
     , @NamedQuery(name = "Administrador.findByAdmContra", query = "SELECT a FROM Administrador a WHERE a.admContra = :admContra AND a.admId = :admId")
     , @NamedQuery(name = "Administrador.findByAdmEmail", query = "SELECT a FROM Administrador a WHERE a.admEmail = :admEmail")
     , @NamedQuery(name = "Administrador.findByAdmNom", query = "SELECT a FROM Administrador a WHERE a.admNom = :admNom")
-    , @NamedQuery(name = "Administrador.findByAdmApat", query = "SELECT a FROM Administrador a WHERE a.admApat = :admApat")
-    , @NamedQuery(name = "Administrador.findByAdmAmat", query = "SELECT a FROM Administrador a WHERE a.admAmat = :admAmat")
-    , @NamedQuery(name = "Administrador.findByAdmFna", query = "SELECT a FROM Administrador a WHERE a.admFna = :admFna")
-    , @NamedQuery(name = "Administrador.findByAdmTelm", query = "SELECT a FROM Administrador a WHERE a.admTelm = :admTelm")
-    , @NamedQuery(name = "Administrador.findByAdmTelc", query = "SELECT a FROM Administrador a WHERE a.admTelc = :admTelc")
     , @NamedQuery(name = "Administrador.findByAdmStatus", query = "SELECT a FROM Administrador a WHERE a.admStatus = :admStatus")})
 public class Administrador implements Serializable {
 

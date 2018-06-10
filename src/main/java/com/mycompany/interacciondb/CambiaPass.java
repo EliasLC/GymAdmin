@@ -55,11 +55,10 @@ public class CambiaPass extends Task<Integer> {
             if(r.size()>0){
                 Administrador adm = r.get(0);
                 adm.setAdmContra(PassNueva);
-                manager.getTransaction().commit();
                 mandarEmail();
-                System.out.println("Hilooo");
                 estado=1;
             }
+            manager.getTransaction().commit();
             manager.close();
         }catch(Exception e){
             Logger.getLogger(RecuperarContraseña.class.getName()).log(Level.SEVERE, null, e);

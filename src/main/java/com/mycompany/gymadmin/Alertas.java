@@ -48,19 +48,26 @@ public class Alertas {
        }
        
        //Alerta de confirmacion
-       public static void confirmacionCorteDeCaja(){
-           Alert alert = new Alert(AlertType.CONFIRMATION);
-           alert.setTitle("Corte De Caja");
-           alert.setHeaderText("Esta A Punto De Terminar Su Turno");
-           alert.setContentText("¿Desea Terminar Su Turno?");
-
-           Optional<ButtonType> result = alert.showAndWait();
-           if (result.get() == ButtonType.OK){
-               //new CorteCaja().start();
-               //Stages.setToLogIn();
-           } else {
-            //Acciones de cancel
-            }
+       public static void confirmacionPregunta(int input){ 
+           switch(input){
+               case 1: 
+                      Optional<ButtonType> result = pregunta("Cerrar Secion","Esta apunto de cerrar secion","¿Desea cerrar la secion actal?").showAndWait();
+                      if (result.get() == ButtonType.OK){
+                          new Thread(new Cambio()).start();
+                      } else{
+                      
+                      } break;
+           }
+          
         }
+       
+       private static Alert pregunta(String titulo, String enca, String texto){
+           Alert alert = new Alert(AlertType.CONFIRMATION);
+           alert.setTitle(titulo);
+           alert.setHeaderText(enca);
+           alert.setContentText(texto);
+           
+           return alert;
+       }
  
 }

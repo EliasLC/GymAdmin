@@ -5,9 +5,7 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.Alertas;
-import com.mycompany.gymadmin.Cambio;
 import com.mycompany.gymadmin.Datos;
-import com.mycompany.gymadmin.Stages;
 import com.mycompany.interacciondb.InsertarAdministrador;
 import com.mycompany.interacciondb.TablaAdministradores;
 import java.io.IOException;
@@ -69,6 +67,9 @@ public class MainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+       if(Datos.getDatos().getStatus()==1){
+           tabPane.getTabs().remove(tabAdministradores);
+       }
         admNombre.setText("Administrador: "+Datos.getDatos().getnombre());
         
         cambiarPaneInfo();
@@ -109,7 +110,7 @@ public class MainController implements Initializable {
     //Metodo para cerrar secion
     private void logOut(){
         ButtonLogout.setOnAction((e)->{
-            new Thread(new Cambio()).start();
+            Alertas.confirmacionPregunta(1);
         });
     }
     

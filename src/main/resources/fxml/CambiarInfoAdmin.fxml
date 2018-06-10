@@ -15,23 +15,24 @@
    <children>
       <Pane layoutX="210.0" layoutY="24.0" prefHeight="405.0" prefWidth="549.0" style="-fx-background-color: rgb(200,200,200,0.3); -fx-background-radius: 5em;">
          <children>
-            <JFXTextField fx:id="nAdmin1" labelFloat="true" layoutX="191.0" layoutY="14.0" promptText="Nombre" />
-            <JFXTextField fx:id="ApePatAdmin1" labelFloat="true" layoutX="191.0" layoutY="62.0" promptText="Apellido Paterno" />
-            <JFXTextField fx:id="ApeMatAdmin1" labelFloat="true" layoutX="191.0" layoutY="110.0" promptText="Apellido Materno" />
-            <JFXTextField fx:id="TMovAdmin1" labelFloat="true" layoutX="191.0" layoutY="158.0" promptText="Telefono Movil" />
-            <JFXTextField fx:id="TfijoAdmin1" labelFloat="true" layoutX="191.0" layoutY="204.0" promptText="Telefono Fijo" />
+            <JFXTextField fx:id="nomAdm" labelFloat="true" layoutX="191.0" layoutY="14.0" promptText="Nombre" />
+            <JFXTextField fx:id="apatAdm" labelFloat="true" layoutX="191.0" layoutY="62.0" promptText="Apellido Paterno" />
+            <JFXTextField fx:id="amatAdm" labelFloat="true" layoutX="191.0" layoutY="110.0" promptText="Apellido Materno" />
+            <JFXTextField fx:id="tmovAdm" labelFloat="true" layoutX="191.0" layoutY="158.0" promptText="Telefono Movil" />
+            <JFXTextField fx:id="tfijAdm" labelFloat="true" layoutX="191.0" layoutY="204.0" promptText="Telefono Fijo" />
             <Label layoutX="186.0" layoutY="246.0" text="Fecha de nacimiento">
                <font>
                   <Font size="16.0" />
                </font>
             </Label>
-            <JFXComboBox fx:id="diaAdmin1" labelFloat="true" layoutX="160.0" layoutY="278.0" promptText="Dia" />
-            <JFXComboBox fx:id="mesAdmin1" labelFloat="true" layoutX="235.0" layoutY="279.0" promptText="Mes" />
-            <JFXComboBox fx:id="añoAdmin1" labelFloat="true" layoutX="317.0" layoutY="279.0" promptText="Año" />
-            <JFXTextField fx:id="EmailAdmin1" labelFloat="true" layoutX="191.0" layoutY="332.0" promptText="Correo Electronico" />
+            <JFXComboBox fx:id="diaAdmin" labelFloat="true" layoutX="160.0" layoutY="279.0" promptText="Dia" />
+            <JFXComboBox fx:id="mesAdmin" labelFloat="true" layoutX="235.0" layoutY="279.0" promptText="Mes" />
+            <JFXComboBox fx:id="añoAdmin" labelFloat="true" layoutX="317.0" layoutY="279.0" promptText="Año" />
+            <JFXTextField fx:id="emailAdm" labelFloat="true" layoutX="160.0" layoutY="331.0" prefHeight="26.0" prefWidth="229.0" promptText="Correo Electronico" />
+            <ProgressIndicator fx:id="prog" layoutX="228.0" layoutY="121.0" prefHeight="100.0" prefWidth="87.0" visible="false" />
          </children>
       </Pane>
-      <JFXButton fx:id="eliminarAdmin1" layoutX="391.0" layoutY="450.0" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Modificar" textFill="WHITE">
+      <JFXButton fx:id="modAdmin" layoutX="391.0" layoutY="450.0" prefHeight="50.0" prefWidth="219.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Modificar" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
