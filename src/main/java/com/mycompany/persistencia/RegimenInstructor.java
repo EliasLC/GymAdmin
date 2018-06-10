@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RegimenInstructor.findByReiId", query = "SELECT r FROM RegimenInstructor r WHERE r.reiId = :reiId")
     , @NamedQuery(name = "RegimenInstructor.findByReiInom", query = "SELECT r FROM RegimenInstructor r WHERE r.reiInom = :reiInom")
     , @NamedQuery(name = "RegimenInstructor.findByReiFc", query = "SELECT r FROM RegimenInstructor r WHERE r.reiFc = :reiFc")
-    , @NamedQuery(name = "RegimenInstructor.findByReiDes", query = "SELECT r FROM RegimenInstructor r WHERE r.reiDes = :reiDes")})
+    , @NamedQuery(name = "RegimenInstructor.findByReiDes", query = "SELECT r FROM RegimenInstructor r WHERE r.reiDes = :reiDes")
+    , @NamedQuery(name = "RegimenInstructor.findByReiStatus", query = "SELECT r FROM RegimenInstructor r WHERE r.reiStatus = :reiStatus")})
 public class RegimenInstructor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +54,8 @@ public class RegimenInstructor implements Serializable {
     @Basic(optional = false)
     @Column(name = "REI_DES")
     private String reiDes;
+    @Column(name = "REI_STATUS")
+    private Integer reiStatus;
     @JoinColumn(name = "REI_INSID", referencedColumnName = "INS_ID")
     @ManyToOne
     private Instructor reiInsid;
@@ -101,6 +104,14 @@ public class RegimenInstructor implements Serializable {
 
     public void setReiDes(String reiDes) {
         this.reiDes = reiDes;
+    }
+
+    public Integer getReiStatus() {
+        return reiStatus;
+    }
+
+    public void setReiStatus(Integer reiStatus) {
+        this.reiStatus = reiStatus;
     }
 
     public Instructor getReiInsid() {

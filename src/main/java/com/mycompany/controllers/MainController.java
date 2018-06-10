@@ -5,7 +5,9 @@ import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.Alertas;
+import com.mycompany.gymadmin.Cambio;
 import com.mycompany.gymadmin.Datos;
+import com.mycompany.gymadmin.Stages;
 import com.mycompany.interacciondb.InsertarAdministrador;
 import com.mycompany.interacciondb.TablaAdministradores;
 import java.io.IOException;
@@ -32,7 +34,7 @@ import javafx.scene.layout.AnchorPane;
 import javafx.util.Duration;
 
 public class MainController implements Initializable {
-
+    @FXML private JFXButton ButtonLogout;
     @FXML private Label admNombre,Mfecha;
     @FXML private JFXTabPane tabPane;
     @FXML private Tab tabSuscipciones,tabSuscriptores,tabRecepcionista,tabInstructores,tabAdministradores,tabInformacion;
@@ -60,20 +62,20 @@ public class MainController implements Initializable {
     //Modificar informacion
     @FXML JFXButton modInfo,modpass;
     @FXML AnchorPane paneinfo;
-    
-    
+        
     //Suscripciones
     @FXML JFXButton adminSuscripcion,adminEstadisticas;
     @FXML AnchorPane paneSuscripcion;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        admNombre.setText("Administrador: "+Datos.getIngreso());
-       // Mfecha.setText(Datos.getFecha());
-       // buscarAdm();
+        admNombre.setText("Administrador: "+Datos.getDatos().getnombre());
+        
         cambiarPaneInfo();
         cambiarSuscriptores();
         insertarAdm();
+        logOut();
+        
         dias = FXCollections.observableArrayList();
         meses= FXCollections.observableArrayList();
         año = FXCollections.observableArrayList();
@@ -102,7 +104,14 @@ public class MainController implements Initializable {
        diaAdmin.setItems(dias); mesAdmin.setItems(meses); añoAdmin.setItems(año);
        cambiarPaneSuscripcion();
        cambioTab();
-    }    
+    }
+
+    //Metodo para cerrar secion
+    private void logOut(){
+        ButtonLogout.setOnAction((e)->{
+            new Thread(new Cambio()).start();
+        });
+    }
     
     //Acciones cambio tab
     private void cambioTab(){
@@ -138,34 +147,7 @@ public class MainController implements Initializable {
             }
         });
     }
-    
-    //Buscar Administrador
-    /*private void buscarAdm(){
-        buscarAdmin.setOnAction((e)->{
-            administradores=null;
-            System.gc();
-            buscarAdmin.setDisable(true);
-            progressAdmin.setVisible(true);
-            buscarAdmin busAdmin = new buscarAdmin();
-            
-            busAdmin.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent event) -> {
-                administradores = FXCollections.observableArrayList(busAdmin.getValue());
-                 TablaAdmin.setItems(administradores);
-                 nomAdmin.setCellValueFactory(new PropertyValueFactory<>("Nombre"));
-                 telfijoAdmin.setCellValueFactory(new PropertyValueFactory<>("TelFijo"));
-                 telmovAdmin.setCellValueFactory(new PropertyValueFactory<>("TelMovil"));
-                 correoAdmin.setCellValueFactory(new PropertyValueFactory<>("Email"));
-                 System.out.println(administradores.size());
-              
-                progressAdmin.setVisible(false);
-                buscarAdmin.setDisable(false);
-            });
-            
-            new Thread(busAdmin).start();
-        });
-    }*/
-
-    //Insertar usuario
+        //Insertar usuario
     private void insertarAdm(){
         agregarAdmin.setOnAction((e)->{
             agregarAdmin.setDisable(true);
@@ -252,4 +234,5 @@ public class MainController implements Initializable {
             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+   
 }

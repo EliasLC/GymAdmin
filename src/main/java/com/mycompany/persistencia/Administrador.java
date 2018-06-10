@@ -1,11 +1,7 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
+import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
@@ -15,10 +11,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -29,16 +27,17 @@ import javax.xml.bind.annotation.XmlRootElement;
 @XmlRootElement
 @NamedQueries({
     @NamedQuery(name = "Administrador.findAll", query = "SELECT a.admNom, a.admApat, a.admAmat, a.admTelm, a.admTelc, a.admEmail FROM Administrador a")
+    , @NamedQuery(name = "Administrador.findIn", query = "SELECT NEW com.mycompany.interacciondb.Ingreso (a.admId,a.admEmail,a.admNom, a.admApat, a.admAmat, a.admContra) FROM Administrador a WHERE a.admEmail = :user")    
     , @NamedQuery(name = "Administrador.findByAdmId", query = "SELECT a FROM Administrador a WHERE a.admId = :admId")
-    , @NamedQuery(name = "Administrador.findByAdmContra", query = "SELECT a FROM Administrador a WHERE a.admContra = :admContra")
-    , @NamedQuery(name = "Administrador.findByAdmEmail", query = "SELECT a.admContra FROM Administrador a WHERE a.admEmail = :admEmail")
+    , @NamedQuery(name = "Administrador.findByAdmContra", query = "SELECT a FROM Administrador a WHERE a.admContra = :admContra AND a.admId = :admId")
+    , @NamedQuery(name = "Administrador.findByAdmEmail", query = "SELECT a FROM Administrador a WHERE a.admEmail = :admEmail")
     , @NamedQuery(name = "Administrador.findByAdmNom", query = "SELECT a FROM Administrador a WHERE a.admNom = :admNom")
     , @NamedQuery(name = "Administrador.findByAdmApat", query = "SELECT a FROM Administrador a WHERE a.admApat = :admApat")
     , @NamedQuery(name = "Administrador.findByAdmAmat", query = "SELECT a FROM Administrador a WHERE a.admAmat = :admAmat")
     , @NamedQuery(name = "Administrador.findByAdmFna", query = "SELECT a FROM Administrador a WHERE a.admFna = :admFna")
     , @NamedQuery(name = "Administrador.findByAdmTelm", query = "SELECT a FROM Administrador a WHERE a.admTelm = :admTelm")
     , @NamedQuery(name = "Administrador.findByAdmTelc", query = "SELECT a FROM Administrador a WHERE a.admTelc = :admTelc")
-    , @NamedQuery(name = "Administrador.findByAdmEstado", query = "SELECT a FROM Administrador a WHERE a.admEstado = :admEstado")})
+    , @NamedQuery(name = "Administrador.findByAdmStatus", query = "SELECT a FROM Administrador a WHERE a.admStatus = :admStatus")})
 public class Administrador implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -69,8 +68,10 @@ public class Administrador implements Serializable {
     private String admTelm;
     @Column(name = "ADM_TELC")
     private String admTelc;
-    @Column(name = "ADM_ESTADO")
-    private String admEstado;
+    @Column(name = "ADM_STATUS")
+    private Integer admStatus;
+    @OneToMany(mappedBy = "tsucAdmid")
+    private Collection<TipoSuc> tipoSucCollection;
 
     public Administrador() {
     }
@@ -160,12 +161,21 @@ public class Administrador implements Serializable {
         this.admTelc = admTelc;
     }
 
-    public String getAdmEstado() {
-        return admEstado;
+    public Integer getAdmStatus() {
+        return admStatus;
     }
 
-    public void setAdmEstado(String admEstado) {
-        this.admEstado = admEstado;
+    public void setAdmStatus(Integer admStatus) {
+        this.admStatus = admStatus;
+    }
+
+    @XmlTransient
+    public Collection<TipoSuc> getTipoSucCollection() {
+        return tipoSucCollection;
+    }
+
+    public void setTipoSucCollection(Collection<TipoSuc> tipoSucCollection) {
+        this.tipoSucCollection = tipoSucCollection;
     }
 
     @Override

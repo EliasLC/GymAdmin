@@ -50,7 +50,7 @@ public class LoginController implements Initializable {
          ingresar.setOnAction((e)->{
              
             if(user.getText().equals("")||pass.getText().equals("")){
-                Alertas.error("Error de ingreso", "", "Se encuentran campos vacios");
+                    Alertas.error("Error de ingreso", "", "Se encuentran campos vacios");
             } else{
             user.setDisable(true); pass.setDisable(true);
             ingresar.setDisable(true);

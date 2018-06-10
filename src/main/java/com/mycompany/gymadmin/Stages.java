@@ -40,7 +40,8 @@ public class Stages {
     
     
     public static void cerrarLogIn(){
-        login.hide();
+        login.hide(); login=null;
+        System.gc();
     }
 
     
@@ -61,6 +62,12 @@ public class Stages {
         }
         login=null;
     }
+    
+    public static void cerrarCuerpo(){
+        cuerpo.hide(); cuerpo= null;
+        System.gc();
+    }
+    
     
         //Validad el cerrar de ventanas
      private static void valCerrar(Stage sta){

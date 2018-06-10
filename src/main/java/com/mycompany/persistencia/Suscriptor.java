@@ -9,6 +9,7 @@ import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -17,6 +18,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -82,6 +84,8 @@ public class Suscriptor implements Serializable {
     private String susTelm;
     @Column(name = "SUS_TELCelular")
     private String sUSTELCelular;
+    @OneToOne(cascade = CascadeType.ALL, mappedBy = "suscriptor")
+    private RegimenSus regimenSus;
     @OneToMany(mappedBy = "sucSusid")
     private Collection<Suscripcion> suscripcionCollection;
     @OneToMany(mappedBy = "msiSusid")
@@ -198,6 +202,14 @@ public class Suscriptor implements Serializable {
 
     public void setSUSTELCelular(String sUSTELCelular) {
         this.sUSTELCelular = sUSTELCelular;
+    }
+
+    public RegimenSus getRegimenSus() {
+        return regimenSus;
+    }
+
+    public void setRegimenSus(RegimenSus regimenSus) {
+        this.regimenSus = regimenSus;
     }
 
     @XmlTransient

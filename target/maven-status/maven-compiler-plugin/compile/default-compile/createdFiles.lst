@@ -1,5 +1,6 @@
 com/mycompany/controllers/CambiarPassController.class
 com/mycompany/gymadmin/MainApp.class
+com/mycompany/interacciondb/CambiaPass.class
 com/mycompany/persistencia/Administrador_.class
 com/mycompany/persistencia/Conexion.class
 com/mycompany/controllers/MainController$1.class
@@ -7,14 +8,17 @@ com/mycompany/persistencia/MensajeSusIns.class
 com/mycompany/persistencia/Recepcionista_.class
 com/mycompany/interacciondb/InsertarAdministrador.class
 com/mycompany/persistencia/Suscripcion_.class
+com/mycompany/gymadmin/Cambio.class
 com/mycompany/controllers/AdminsuscripcionesController.class
 com/mycompany/interacciondb/buscarAdmin.class
+com/mycompany/persistencia/RegimenSus_.class
 com/mycompany/controllers/SplashController.class
 com/mycompany/controllers/MainController.class
 com/mycompany/persistencia/RegimenInstructor_.class
 com/mycompany/controllers/SuscriptoresEstadisticasController.class
 com/mycompany/persistencia/RutinaSus.class
 com/mycompany/persistencia/RegimenInstructor.class
+com/mycompany/persistencia/RegimenSus.class
 com/mycompany/persistencia/Suscriptor.class
 com/mycompany/controllers/RecuperarPassController.class
 com/mycompany/persistencia/DataBase.class
@@ -44,3 +48,4 @@ com/mycompany/controllers/LoginController.class
 com/mycompany/persistencia/Administrador.class
 com/mycompany/gymadmin/Datos.class
 com/mycompany/persistencia/RutinaInstructor.class
+com/mycompany/interacciondb/CambiaPass$1.class

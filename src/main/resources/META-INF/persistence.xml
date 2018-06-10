@@ -8,14 +8,15 @@
     <class>com.mycompany.persistencia.Suscripcion</class>
     <class>com.mycompany.persistencia.Recepcionista</class>
     <class>com.mycompany.persistencia.TransaccionesRecep</class>
-    <class>com.mycompany.persistencia.TipoSuc</class>
     <class>com.mycompany.persistencia.RutinaSus</class>
-    <class>com.mycompany.persistencia.MensajeSusIns</class>
     <class>com.mycompany.persistencia.Suscriptor</class>
     <class>com.mycompany.persistencia.Administrador</class>
+    <class>com.mycompany.persistencia.MensajeSusIns</class>
+    <class>com.mycompany.persistencia.RegimenSus</class>
+    <class>com.mycompany.persistencia.TipoSuc</class>
     <properties>
-      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://189.171.1.138:3306/PROYECTON?zeroDateTimeBehavior=convertToNull"/>
-      <property name="javax.persistence.jdbc.user" value="ELIAS"/>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://189.176.71.204:3306/PROYECTON?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="Elias"/>
       <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
       <property name="javax.persistence.jdbc.password" value="E15380201"/>
       <property name="hibernate.cache.provider_class" value="org.hibernate.cache.NoCacheProvider"/>

@@ -30,8 +30,7 @@ public class Ingresar extends Task<Integer> {
         
         EntityManager manager = DataBase.getEMF().createEntityManager();
         Query result;
-        result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.Ingreso"
-                + " (a.admNom, a.admApat, a.admAmat, a.admContra) FROM Administrador a WHERE a.admEmail = :user");
+        result = manager.createNamedQuery("Administrador.findIn");
         result.setParameter("user",user);
         List<Ingreso>  re = result.getResultList();
         manager.close();
@@ -41,8 +40,8 @@ public class Ingresar extends Task<Integer> {
         } else if(!re.get(0).getAdmContra().equals(pass)){
             
             return 2;
-        }      
-        Datos.setIngreso(re.get(0).getnombre());     
+        } 
+        Datos.setIngreso(re.get(0));
         return exito;
     }
     

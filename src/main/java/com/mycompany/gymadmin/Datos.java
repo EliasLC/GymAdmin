@@ -1,5 +1,6 @@
 package com.mycompany.gymadmin;
 
+import com.mycompany.interacciondb.Ingreso;
 import java.util.Date;
 
 /**
@@ -7,20 +8,15 @@ import java.util.Date;
  * @author elias
  */
 public class Datos {
+    private static Ingreso ingreso;
     
-    private static String ingreso;
-   // private static String fecha;
     private Datos(){}
     
-    public static String getIngreso(){
-        return ingreso;
+    public static Ingreso getDatos(){
+       return ingreso;
     }
     
-    public static void setIngreso(String in){
-        Date date = new Date();
-       // fecha= String.valueOf(date.getDay())+"/"+String.valueOf(date.getMonth()+"/"+String.valueOf(date.getYear()));
+    public static void setIngreso(Ingreso in){
         ingreso = in;
     }
-    
-  
 }

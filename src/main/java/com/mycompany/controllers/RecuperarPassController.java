@@ -11,6 +11,7 @@ import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.animation.FadeTransition;
 import javafx.concurrent.WorkerStateEvent;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.fxml.Initializable;
@@ -34,7 +35,7 @@ public class RecuperarPassController implements Initializable {
     
     //Metodo para enviar recuperar la contraseña
     private void recuperarPass(){
-        enviar.setOnAction((e)->{
+        enviar.setOnAction((ActionEvent e)->{
             if(email.getText().equals("")){
                 Alertas.error("Error de ingreso", "", "El campo Email se enuentra vacio");
             }else{
@@ -50,6 +51,7 @@ public class RecuperarPassController implements Initializable {
                     switch (result) {
                         case 0:
                             Alertas.informacion("Recuperacion Exitosa", "Se ha enviado su contraseña a su correo electronico");
+                            cambiarPane("/fxml/login.fxml",root);
                             break;
                         case 1:
                             Alertas.error("Error de Datos", "Usuario Inexistente", "El correo electronico ingresado no es valido");

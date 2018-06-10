@@ -33,7 +33,8 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TipoSuc.findAll", query = "SELECT t FROM TipoSuc t")
     , @NamedQuery(name = "TipoSuc.findByTsucId", query = "SELECT t FROM TipoSuc t WHERE t.tsucId = :tsucId")
     , @NamedQuery(name = "TipoSuc.findByTsucNom", query = "SELECT t FROM TipoSuc t WHERE t.tsucNom = :tsucNom")
-    , @NamedQuery(name = "TipoSuc.findByTsusDesc", query = "SELECT t FROM TipoSuc t WHERE t.tsusDesc = :tsusDesc")})
+    , @NamedQuery(name = "TipoSuc.findByTsusDesc", query = "SELECT t FROM TipoSuc t WHERE t.tsusDesc = :tsusDesc")
+    , @NamedQuery(name = "TipoSuc.findByTsusStatus", query = "SELECT t FROM TipoSuc t WHERE t.tsusStatus = :tsusStatus")})
 public class TipoSuc implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -46,6 +47,8 @@ public class TipoSuc implements Serializable {
     private String tsucNom;
     @Column(name = "TSUS_DESC")
     private String tsusDesc;
+    @Column(name = "TSUS_STATUS")
+    private Integer tsusStatus;
     @OneToMany(mappedBy = "sucTsuc")
     private Collection<Suscripcion> suscripcionCollection;
     @JoinColumn(name = "TSUC_ADMID", referencedColumnName = "ADM_ID")
@@ -81,6 +84,14 @@ public class TipoSuc implements Serializable {
 
     public void setTsusDesc(String tsusDesc) {
         this.tsusDesc = tsusDesc;
+    }
+
+    public Integer getTsusStatus() {
+        return tsusStatus;
+    }
+
+    public void setTsusStatus(Integer tsusStatus) {
+        this.tsusStatus = tsusStatus;
     }
 
     @XmlTransient

@@ -490,12 +490,12 @@
       </JFXTabPane>
       <AnchorPane layoutY="-2.0" prefHeight="140.0" prefWidth="1170.0" style="-fx-background-color: #395368;">
          <children>
-            <Label fx:id="admNombre" layoutX="839.0" layoutY="29.0" prefHeight="26.0" prefWidth="319.0" text="Administrador: Nombre de usuario" textFill="WHITE">
+            <Label fx:id="admNombre" layoutX="837.0" layoutY="14.0" prefHeight="26.0" prefWidth="319.0" text="Administrador: Nombre de usuario" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="Mfecha" layoutX="1012.0" layoutY="70.0" text="Fecha: 12/02/2018" textFill="WHITE">
+            <Label fx:id="Mfecha" layoutX="997.0" layoutY="52.0" text="Fecha: 12/02/2018" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -504,6 +504,15 @@
                <image>
                   <Image url="@/images/Logo.png" />
                </image></ImageView>
+            <JFXButton fx:id="ButtonLogout" layoutX="947.0" layoutY="74.0" prefHeight="55.0" prefWidth="183.0" ripplerFill="WHITE" text="Cerras cesion " textFill="WHITE">
+               <graphic>
+                  <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true" >
+                    <image>
+                      <Image url="@/images/exit.png"/>  
+                    </image>
+                  </ImageView>
+               </graphic>
+            </JFXButton>
          </children></AnchorPane>
    </children>
 </AnchorPane>

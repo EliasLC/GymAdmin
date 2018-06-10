@@ -40,7 +40,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Instructor.findByInsAm", query = "SELECT i FROM Instructor i WHERE i.insAm = :insAm")
     , @NamedQuery(name = "Instructor.findByInsFna", query = "SELECT i FROM Instructor i WHERE i.insFna = :insFna")
     , @NamedQuery(name = "Instructor.findByInsTelm", query = "SELECT i FROM Instructor i WHERE i.insTelm = :insTelm")
-    , @NamedQuery(name = "Instructor.findByInsTelc", query = "SELECT i FROM Instructor i WHERE i.insTelc = :insTelc")})
+    , @NamedQuery(name = "Instructor.findByInsTelc", query = "SELECT i FROM Instructor i WHERE i.insTelc = :insTelc")
+    , @NamedQuery(name = "Instructor.findByInsStatus", query = "SELECT i FROM Instructor i WHERE i.insStatus = :insStatus")})
 public class Instructor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -72,6 +73,8 @@ public class Instructor implements Serializable {
     private String insTelm;
     @Column(name = "INS_TELC")
     private String insTelc;
+    @Column(name = "INS_STATUS")
+    private Integer insStatus;
     @OneToMany(mappedBy = "msiInsid")
     private Collection<MensajeSusIns> mensajeSusInsCollection;
     @OneToMany(mappedBy = "reiInsid")
@@ -166,6 +169,14 @@ public class Instructor implements Serializable {
 
     public void setInsTelc(String insTelc) {
         this.insTelc = insTelc;
+    }
+
+    public Integer getInsStatus() {
+        return insStatus;
+    }
+
+    public void setInsStatus(Integer insStatus) {
+        this.insStatus = insStatus;
     }
 
     @XmlTransient

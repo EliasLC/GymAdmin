@@ -5,14 +5,20 @@ package com.mycompany.interacciondb;
  * @author elias
  */
 public class Ingreso {
-    
-    private String admNom,admApat,admAmat,admContra;
 
+    /**
+     * @return the email
+     */
+   
+    
+    private String admNom,email,admApat,admAmat,admContra;
+    private Integer id;
     public Ingreso(){
     
     }
-    public Ingreso(String admNom, String admApat, String admAmat, String admContra){
+    public Ingreso(Integer id,String email, String admNom, String admApat, String admAmat, String admContra){
         this.admAmat= admAmat; this.admApat= admApat; this.admContra= admContra; this.admNom= admNom;
+        this.id=id; this.email= email;
     }
     
     /**
@@ -74,5 +80,30 @@ public class Ingreso {
     //Metodo para obtener el nombre del usuario
     public String getnombre(){
         return admNom+" "+ admApat+ " "+ admAmat;
+    }
+    
+     public String getEmail() {
+        return email;
+    }
+
+    /**
+     * @param email the email to set
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     * @return the id
+     */
+    public Integer getId() {
+        return id;
+    }
+
+    /**
+     * @param id the id to set
+     */
+    public void setId(Integer id) {
+        this.id = id;
     }
 }

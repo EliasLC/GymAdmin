@@ -34,7 +34,8 @@ import javax.xml.bind.annotation.XmlRootElement;
     , @NamedQuery(name = "RutinaInstructor.findByRuiId", query = "SELECT r FROM RutinaInstructor r WHERE r.ruiId = :ruiId")
     , @NamedQuery(name = "RutinaInstructor.findByRuiInom", query = "SELECT r FROM RutinaInstructor r WHERE r.ruiInom = :ruiInom")
     , @NamedQuery(name = "RutinaInstructor.findByRuiFc", query = "SELECT r FROM RutinaInstructor r WHERE r.ruiFc = :ruiFc")
-    , @NamedQuery(name = "RutinaInstructor.findByRuiDes", query = "SELECT r FROM RutinaInstructor r WHERE r.ruiDes = :ruiDes")})
+    , @NamedQuery(name = "RutinaInstructor.findByRuiDes", query = "SELECT r FROM RutinaInstructor r WHERE r.ruiDes = :ruiDes")
+    , @NamedQuery(name = "RutinaInstructor.findByRuiStatus", query = "SELECT r FROM RutinaInstructor r WHERE r.ruiStatus = :ruiStatus")})
 public class RutinaInstructor implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -53,6 +54,8 @@ public class RutinaInstructor implements Serializable {
     @Basic(optional = false)
     @Column(name = "RUI_DES")
     private String ruiDes;
+    @Column(name = "RUI_STATUS")
+    private Integer ruiStatus;
     @JoinColumn(name = "RUI_INSID", referencedColumnName = "INS_ID")
     @ManyToOne
     private Instructor ruiInsid;
@@ -101,6 +104,14 @@ public class RutinaInstructor implements Serializable {
 
     public void setRuiDes(String ruiDes) {
         this.ruiDes = ruiDes;
+    }
+
+    public Integer getRuiStatus() {
+        return ruiStatus;
+    }
+
+    public void setRuiStatus(Integer ruiStatus) {
+        this.ruiStatus = ruiStatus;
     }
 
     public Instructor getRuiInsid() {

@@ -40,7 +40,8 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Recepcionista.findByRecAmat", query = "SELECT r FROM Recepcionista r WHERE r.recAmat = :recAmat")
     , @NamedQuery(name = "Recepcionista.findByRecFna", query = "SELECT r FROM Recepcionista r WHERE r.recFna = :recFna")
     , @NamedQuery(name = "Recepcionista.findByRecTelm", query = "SELECT r FROM Recepcionista r WHERE r.recTelm = :recTelm")
-    , @NamedQuery(name = "Recepcionista.findByRecTelc", query = "SELECT r FROM Recepcionista r WHERE r.recTelc = :recTelc")})
+    , @NamedQuery(name = "Recepcionista.findByRecTelc", query = "SELECT r FROM Recepcionista r WHERE r.recTelc = :recTelc")
+    , @NamedQuery(name = "Recepcionista.findByRecStatus", query = "SELECT r FROM Recepcionista r WHERE r.recStatus = :recStatus")})
 public class Recepcionista implements Serializable {
 
     private static final long serialVersionUID = 1L;
@@ -74,6 +75,8 @@ public class Recepcionista implements Serializable {
     @Basic(optional = false)
     @Column(name = "REC_TELC")
     private String recTelc;
+    @Column(name = "REC_STATUS")
+    private Integer recStatus;
     @OneToMany(mappedBy = "trRecid")
     private Collection<TransaccionesRecep> transaccionesRecepCollection;
 
@@ -166,6 +169,14 @@ public class Recepcionista implements Serializable {
 
     public void setRecTelc(String recTelc) {
         this.recTelc = recTelc;
+    }
+
+    public Integer getRecStatus() {
+        return recStatus;
+    }
+
+    public void setRecStatus(Integer recStatus) {
+        this.recStatus = recStatus;
     }
 
     @XmlTransient
