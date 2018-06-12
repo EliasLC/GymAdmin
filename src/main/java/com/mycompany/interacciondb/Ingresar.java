@@ -23,7 +23,6 @@ public class Ingresar extends Task<Integer> {
     */
     @Override
     protected Integer call() {
-        System.out.println("hilito");
         int exito = 0;
         
         EntityManager manager = DataBase.getEMF().createEntityManager();

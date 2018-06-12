@@ -3,7 +3,6 @@ com/mycompany/gymadmin/MainApp.class
 com/mycompany/interacciondb/CambiaPass.class
 com/mycompany/persistencia/Administrador_.class
 com/mycompany/persistencia/Conexion.class
-com/mycompany/controllers/MainController$1.class
 com/mycompany/persistencia/MensajeSusIns.class
 com/mycompany/persistencia/Recepcionista_.class
 com/mycompany/interacciondb/InsertarAdministrador.class
@@ -11,8 +10,9 @@ com/mycompany/persistencia/Suscripcion_.class
 com/mycompany/gymadmin/Cambio.class
 com/mycompany/controllers/AdminsuscripcionesController.class
 com/mycompany/gymadmin/AbrirVentana.class
-com/mycompany/interacciondb/buscarAdmin.class
+com/mycompany/interacciondb/llenarTablaAdm.class
 com/mycompany/persistencia/RegimenSus_.class
+com/mycompany/gymadmin/validarEmail.class
 com/mycompany/controllers/SplashController.class
 com/mycompany/controllers/MainController.class
 com/mycompany/persistencia/RegimenInstructor_.class
@@ -42,6 +42,7 @@ com/mycompany/interacciondb/RecuperarContraseña.class
 com/mycompany/gymadmin/Alertas.class
 com/mycompany/persistencia/TipoSuc.class
 com/mycompany/controllers/VisualizarSuscriptorController.class
+com/mycompany/gymadmin/DeleteAdm.class
 com/mycompany/interacciondb/ModIAdm.class
 com/mycompany/interacciondb/Ingreso.class
 com/mycompany/interacciondb/Ingresar.class
@@ -50,6 +51,7 @@ com/mycompany/persistencia/TipoSuc_.class
 com/mycompany/persistencia/RutinaInstructor_.class
 com/mycompany/controllers/LoginController.class
 com/mycompany/persistencia/Administrador.class
+com/mycompany/interacciondb/InsertarAdministrador$1.class
 com/mycompany/gymadmin/Datos.class
 com/mycompany/persistencia/RutinaInstructor.class
 com/mycompany/interacciondb/CambiaPass$1.class

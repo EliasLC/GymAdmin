@@ -13,8 +13,8 @@ public class TablaAdministradores {
     private StringProperty Nombre,TelMovil,TelFijo,Email;
     
     
-    public TablaAdministradores(String Nombre, String TelMovil, String TelFijo, String Email){
-        this.Nombre = new SimpleStringProperty(Nombre); 
+    public TablaAdministradores(String Nombre,String paterno, String materno, String TelMovil, String TelFijo, String Email){
+        this.Nombre = new SimpleStringProperty(Nombre+" "+paterno+" "+materno); 
         this.TelMovil= new SimpleStringProperty(TelMovil);
         this.TelFijo = new SimpleStringProperty(TelFijo);
         this.Email = new SimpleStringProperty(Email);

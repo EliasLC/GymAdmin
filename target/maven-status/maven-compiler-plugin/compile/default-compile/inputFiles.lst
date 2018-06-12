@@ -5,13 +5,16 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/CambiaPass.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RutinaInstructor.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/RecuperarPassController.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaAdm.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Datos.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/CambiarPassController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/AdminsuscripcionesController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/TipoSuc.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Suscripcion.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/validarEmail.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InsertarAdministrador.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RegimenSus.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/DeleteAdm.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Conexion.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/RecuperarContraseña.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/CambiarInfoAdminController.java
@@ -23,7 +26,6 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Alertas.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/MainApp.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Suscriptor.java
-/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/buscarAdmin.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/VisualizarSuscriptorController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/EstadisticasAdminController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Cambio.java
