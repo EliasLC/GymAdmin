@@ -1,10 +1,12 @@
 package com.mycompany.interacciondb;
 import com.mycompany.persistencia.Administrador;
 import com.mycompany.persistencia.DataBase;
+import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Date;
+import java.util.List;
 import java.util.Properties;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -21,45 +23,60 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
+import javax.persistence.Query;
+import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *
  * @author elias
  */
-public class InsertarAdministrador extends Task<Boolean> {
+public class InsertarAdministrador extends Task<Integer> {
 
     private String nombre, appat,apmat,movil,fijo,email, fecha;
     
     public InsertarAdministrador(String nombre, String appat,String apmat, 
-        String movil,String fijo, String email,String fecha){
+        String movil,String fijo, String email,String fecha,String colonia,String mza, String lote){
         this.nombre= nombre; this.appat=appat; this.apmat=apmat; this.movil= movil; this.fijo= fijo; this.email= email;
-        this.fecha=fecha;
+        this.fecha=fecha; 
     }
     
     @Override
-    protected Boolean call() throws Exception {
+    protected Integer call() throws Exception {
         return insertar();
     }
     
-    
+    /*Metodo por el cual se ingresa un nuevo usuario a la base de datos
+        Retorno 0: se ha ingresado correctamente el usuario
+        Retorno 1: El email ingresado ya se encuentra utilizado por otro usuario 
+        Retorno 2: No se ha podido realisar el INSERT
+    */
     //Verificar la incercion
-    private boolean insertar (){
-        boolean res = false;
+    private Integer insertar (){
+        int res = 0;
         try{
             EntityManager em = DataBase.getEMF().createEntityManager();
             em.getTransaction().begin();
-            Administrador r = new Administrador();
-            r.setAdmNom(nombre); r.setAdmApat(appat);
-            r.setAdmAmat(apmat); r.setAdmContra("0987");
-            r.setAdmTelm(movil); r.setAdmTelc(fijo);
-            r.setAdmEmail(email); r.setAdmFna(nacimiento());
-            r.setAdmStatus(1);
-            em.persist(r);  em.getTransaction().commit();
-            em.close();
-            mandarEmail();
-            res= true;
-        }catch(Exception e){
-             Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, e);
+            Query result= em.createNamedQuery("Administrador.findByAdmEmail");
+            result.setParameter("admEmail", email);
+            List<Administrador> re=  result.getResultList();
+            if(re.isEmpty()){
+                Administrador r = new Administrador();
+                r.setAdmNom(nombre); r.setAdmApat(appat);
+                r.setAdmAmat(apmat); r.setAdmContra("0987");
+                r.setAdmTelm(movil); r.setAdmTelc(fijo);
+                r.setAdmEmail(email); r.setAdmFna(nacimiento());
+                r.setAdmStatus(1);
+                em.persist(r);  
+                em.getTransaction().commit();
+                em.close();
+                mandarEmail();
+            } else {
+                res=1;
+            }
+            
+        } catch (Exception e){
+            Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, e);
+            res= 2;
         }
         return res;
     }

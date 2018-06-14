@@ -8,6 +8,7 @@ package com.mycompany.persistencia;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -41,8 +42,9 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Instructor.findByInsFna", query = "SELECT i FROM Instructor i WHERE i.insFna = :insFna")
     , @NamedQuery(name = "Instructor.findByInsTelm", query = "SELECT i FROM Instructor i WHERE i.insTelm = :insTelm")
     , @NamedQuery(name = "Instructor.findByInsTelc", query = "SELECT i FROM Instructor i WHERE i.insTelc = :insTelc")
-    , @NamedQuery(name = "Instructor.findByInsStatus", query = "SELECT i FROM Instructor i WHERE i.insStatus = :insStatus")})
+    , @NamedQuery(name = "Instructor.findTablaInstructor", query = "SELECT NEW com.mycompany.interacciondb.TablaInstructores(i.insNom, i.insApat, i.insAm, i.insTelm, i.insTelc, i.insEmail, d.colonia, d.manzana, d.lote) FROM Instructor i, Direccion_INS d WHERE i.insStatus = :insStatus AND d.instructor.insId= i.insId")})
 public class Instructor implements Serializable {
+
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -99,9 +101,12 @@ public class Instructor implements Serializable {
         this.insFna = insFna;
     }
 
+    @OneToMany(mappedBy="instructor")
+    private List<Instruidos> suscriptores;
+    
     public Integer getInsId() {
         return insId;
-    }
+    }   
 
     public void setInsId(Integer insId) {
         this.insId = insId;
@@ -204,6 +209,11 @@ public class Instructor implements Serializable {
 
     public void setRutinaInstructorCollection(Collection<RutinaInstructor> rutinaInstructorCollection) {
         this.rutinaInstructorCollection = rutinaInstructorCollection;
+    }
+    
+    
+    public List<Instruidos> getSuscriptores() {
+        return suscriptores;
     }
 
     @Override

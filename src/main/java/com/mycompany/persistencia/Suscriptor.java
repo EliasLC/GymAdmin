@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -97,6 +93,7 @@ public class Suscriptor implements Serializable {
     public Suscriptor(Integer susId) {
         this.susId = susId;
     }
+    
 
     public Suscriptor(Integer susId, String susContra, String susEmail, String susNom, String sUSAPat, String sUSAMat, Date sUSFechaNA) {
         this.susId = susId;
@@ -107,6 +104,9 @@ public class Suscriptor implements Serializable {
         this.sUSAMat = sUSAMat;
         this.sUSFechaNA = sUSFechaNA;
     }
+    
+    @OneToMany(mappedBy="suscriptor")
+    private List<Instruidos> instructor;
 
     public Integer getSusId() {
         return susId;
@@ -253,6 +253,13 @@ public class Suscriptor implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.persistencia.Suscriptor[ susId=" + susId + " ]";
+    }
+
+    /**
+     * @return the instructor
+     */
+    public List<Instruidos> getInstructor() {
+        return instructor;
     }
     
 }

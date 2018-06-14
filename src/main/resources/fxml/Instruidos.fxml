@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" prefHeight="482.0" prefWidth="743.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.InstruidosController">
+   <children>
+      <AnchorPane prefHeight="55.0" prefWidth="743.0" style="-fx-background-color: #044a68;">
+         <children>
+            <Label layoutX="308.0" layoutY="10.0" prefHeight="36.0" prefWidth="127.0" text="Instruidos" textFill="WHITE">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="80.0" layoutY="62.0" prefHeight="71.0" prefWidth="584.0" style="-fx-background-color: rgb(180,180,180,0.4);">
+         <children>
+            <ImageView fitHeight="50.0" fitWidth="50.0" layoutX="20.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" />
+            <Label layoutX="89.0" layoutY="9.0" prefHeight="21.0" prefWidth="376.0" text="Instructor: ">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="89.0" layoutY="39.0" prefHeight="21.0" prefWidth="252.0" text="Numero de Instruidos:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="472.0" layoutY="12.0" prefHeight="20.0" prefWidth="98.0" text="Edad:">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <TableView layoutX="24.0" layoutY="148.0" prefHeight="262.0" prefWidth="694.0">
+        <columns>
+          <TableColumn prefWidth="207.0" text="Nombre" />
+          <TableColumn prefWidth="43.0" text="Edad" />
+            <TableColumn prefWidth="79.0" text="Tel Movil" />
+            <TableColumn prefWidth="71.0" text="Tel Fijo" />
+            <TableColumn prefWidth="199.0" text="Correo" />
+            <TableColumn prefWidth="94.0" text="Fecha Inicio" />
+        </columns>
+      </TableView>
+      <JFXButton fx:id="cancelInstruidos" layoutX="307.0" layoutY="423.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cancelar" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/add-user.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

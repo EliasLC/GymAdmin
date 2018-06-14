@@ -198,6 +198,5 @@ public class Administrador implements Serializable {
     @Override
     public String toString() {
         return "com.mycompany.persistencia.Administrador[ admId=" + admId + " ]";
-    }
-    
+    }   
 }
