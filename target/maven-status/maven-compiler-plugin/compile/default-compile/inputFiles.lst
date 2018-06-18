@@ -8,10 +8,13 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/AdminsuscripcionesController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/DeleteIns.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/datos.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/extra.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaCostos.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Instruidos.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InsertarRecepcionista.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaPrecios.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/RecuperarContraseña.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaRecepcionista.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RegimenInstructor.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaInstructores.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/PreciosSuscripcionesController.java
@@ -21,6 +24,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/TransaccionesRecep.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/EliminarTipoSus.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaInstructores.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/MasSuscriptoresController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Alertas.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Suscriptor.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/VisualizarSuscriptorController.java
@@ -45,6 +49,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/CambiaPass.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RutinaInstructor.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/RecuperarPassController.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaRecepcionista.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/ModificarSuscripciones.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/CambiarPassController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/TipoSuc.java
@@ -53,6 +58,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/validarEmail.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InsertarAdministrador.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RegimenSus.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Direccion_REC.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaInstruidos.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Conexion.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/CambiarInfoAdminController.java
@@ -65,3 +71,4 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaSuscripciones.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/PeriodoSuc.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Direccion_INS.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InfoSuscriptores.java

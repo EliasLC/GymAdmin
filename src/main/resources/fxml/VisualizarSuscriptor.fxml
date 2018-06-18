@@ -13,7 +13,7 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane id="AnchorPane" prefHeight="523.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.VisualizarSuscriptorController">
+<AnchorPane id="AnchorPane" fx:id="Pane" prefHeight="523.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.VisualizarSuscriptorController">
    <children>
       <TableView fx:id="tablaUsuarios" layoutX="23.0" layoutY="104.0" prefHeight="397.0" prefWidth="951.0">
         <columns>
@@ -29,13 +29,13 @@
       </TableView>
       <Pane layoutX="178.0" layoutY="21.0" prefHeight="69.0" prefWidth="640.0" style="-fx-background-color: rgb(180,180,180,0.2); -fx-background-radius: 5em;">
          <children>
-            <JFXTextField fx:id="Tbuscar" labelFloat="true" layoutX="48.0" layoutY="22.0" prefHeight="26.0" prefWidth="272.0" promptText="Nombre Suscriptor" />
+            <JFXTextField fx:id="Tbuscar" focusColor="#395368" labelFloat="true" layoutX="48.0" layoutY="22.0" prefHeight="26.0" prefWidth="272.0" promptText="Nombre Suscriptor" />
             <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="327.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/search.png" />
                </image>
             </ImageView>
-            <JFXButton fx:id="BMas" layoutX="434.0" layoutY="12.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Mas" textFill="WHITE">
+            <JFXButton fx:id="BMas" disable="true" layoutX="434.0" layoutY="12.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Mas" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -56,5 +56,14 @@
          </effect>
       </Pane>
       <ProgressIndicator fx:id="progTabla" layoutX="458.0" layoutY="277.0" prefHeight="76.0" prefWidth="87.0" visible="false" />
+      <JFXButton fx:id="BActualizar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="924.0" layoutY="60.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;">
+         <graphic>
+            <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/recargar.png" />
+               </image>
+            </ImageView>
+         </graphic>
+      </JFXButton>
    </children>
 </AnchorPane>

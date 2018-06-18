@@ -66,12 +66,12 @@ public class InsertarInstructor extends Task<Integer> {
                 in.setInsTelc(fijo);  in.setInsFna(nacimiento()); in.setInsStatus(1);
                 direccion.setColonia(colonia); direccion.setLote(lote); direccion.setManzana(mzn);
                 em.persist(in); em.persist(direccion); direccion.setInstructor(in);
-                em.getTransaction().commit();
-                em.close();
                 mandarEmail();
             } else{
                 re=1;
             }
+            em.getTransaction().commit();
+                em.close();
             
         }catch(Exception e ){
             Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, e);

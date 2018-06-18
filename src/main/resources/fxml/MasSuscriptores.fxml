@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="521.0" prefWidth="558.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.MasSuscriptoresController">
+   <children>
+      <AnchorPane prefHeight="62.0" prefWidth="558.0" style="-fx-background-color: #395368;">
+         <children>
+            <Label layoutX="222.0" layoutY="18.0" prefHeight="26.0" prefWidth="115.0" text="Suscriptor" textFill="WHITE">
+               <font>
+                  <Font size="22.0" />
+               </font>
+            </Label>
+         </children>
+      </AnchorPane>
+      <Pane layoutX="73.0" layoutY="78.0" prefHeight="374.0" prefWidth="413.0" style="-fx-background-color: rgb(180,180,180,0.4); -fx-background-radius: 5em;">
+         <children>
+             <ImageView fitHeight="77.0" fitWidth="77.0" layoutX="20.0" layoutY="22.0" pickOnBounds="true" preserveRatio="true">
+                 <image>
+                     <Image url="@/images/resume.png" />
+                 </image>
+             </ImageView>
+            <Label fx:id="Nombre" layoutX="106.0" layoutY="22.0" text="Elias Lopez Cabrera">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="edad" layoutX="106.0" layoutY="53.0" text="Edad: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="19.0" layoutY="151.0" text="Colonia:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="colonia" layoutX="120.0" layoutY="152.0" text="Colonia">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="calle" layoutX="121.0" layoutY="185.0" text="Calle">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label fx:id="ml" layoutX="123.0" layoutY="220.0" text="M L">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="18.0" layoutY="250.0" text="Celular:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="celular" layoutX="93.0" layoutY="253.0" text="624-23-45-554">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="285.0" text="FIjo:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="Fijo" layoutX="64.0" layoutY="290.0" text="3454567">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="22.0" layoutY="323.0" text="Email:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="email" layoutX="83.0" layoutY="325.0" text="eliaslcabrera@gmail.com">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="120.0" text="Instructor: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label fx:id="inst" layoutX="119.0" layoutY="121.0" text="Label">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="20.0" layoutY="184.0" text="Calle:">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+            <Label layoutX="21.0" layoutY="218.0" text="M# L#: ">
+               <font>
+                  <Font size="18.0" />
+               </font>
+            </Label>
+         </children>
+      </Pane>
+      <JFXButton fx:id="cancelar" layoutX="357.0" layoutY="464.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Cerrar" textFill="WHITE">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </JFXButton>
+   </children>
+</AnchorPane>

@@ -15,7 +15,6 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "DIRECCION_SUS")
 public class Direccion_SUS implements Serializable {
-    
     @Id
     @OneToOne
     @JoinColumn(name = "DSUS_SUSID")
@@ -30,7 +29,10 @@ public class Direccion_SUS implements Serializable {
     
     @Column(name="DSUS_LOTE")
     private String lote;
-
+    
+    @Column(name="DSUS_CALLE")
+    private String calle;
+    
     public Suscriptor getSuscriptor() {
         return suscriptor;
     }
@@ -62,4 +64,13 @@ public class Direccion_SUS implements Serializable {
     public void setLote(String lote) {
         this.lote = lote;
     }
+    
+    public String getCalle() {
+        return calle;
+    }
+    
+    public void setCalle(String calle) {
+        this.calle = calle;
+    }
+    
 }

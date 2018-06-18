@@ -9,8 +9,10 @@ com/mycompany/persistencia/MensajeSusIns.class
 com/mycompany/persistencia/Recepcionista_.class
 com/mycompany/interacciondb/InsertarAdministrador.class
 com/mycompany/persistencia/Suscripcion_.class
+com/mycompany/controllers/MasSuscriptoresController$1.class
 com/mycompany/controllers/RecuperarSuscripcionController.class
 com/mycompany/controllers/PreciosSuscripcionesController.class
+com/mycompany/persistencia/InstruidosId_.class
 com/mycompany/interacciondb/llenarTablaCostos.class
 com/mycompany/interacciondb/llenarTablaAdm.class
 com/mycompany/interacciondb/TablaSuscripciones.class
@@ -23,12 +25,15 @@ com/mycompany/persistencia/RegimenInstructor.class
 com/mycompany/controllers/InstruidosController.class
 com/mycompany/controllers/CambiarInfoAdminController$datosAdmin.class
 com/mycompany/persistencia/Suscriptor_.class
+com/mycompany/persistencia/Direccion_REC_.class
 com/mycompany/persistencia/PeriodoSuc.class
 com/mycompany/controllers/PreciosSuscripcionesController$1.class
 com/mycompany/interacciondb/TablaPrecios.class
 com/mycompany/gymadmin/Stages.class
 com/mycompany/interacciondb/InsertarInstructor.class
 com/mycompany/persistencia/RutinaSus_.class
+com/mycompany/controllers/MasSuscriptoresController.class
+com/mycompany/persistencia/Direccion_REC.class
 com/mycompany/persistencia/Instructor_.class
 com/mycompany/interacciondb/ModPrecios.class
 com/mycompany/interacciondb/ModificarSuscripciones.class
@@ -46,6 +51,7 @@ com/mycompany/persistencia/Direccion_INS_.class
 com/mycompany/interacciondb/InsertarAdministrador$1.class
 com/mycompany/persistencia/Direccion_SUS_.class
 com/mycompany/interacciondb/CambiaPass$1.class
+com/mycompany/interacciondb/extra.class
 com/mycompany/interacciondb/buscarInstruidos.class
 com/mycompany/interacciondb/llenarTablaInstructores.class
 com/mycompany/interacciondb/llenarTablaSuscripciones.class
@@ -56,9 +62,12 @@ com/mycompany/interacciondb/llenarTablaSuscriptores.class
 com/mycompany/gymadmin/Cambio.class
 com/mycompany/controllers/AdminsuscripcionesController.class
 com/mycompany/gymadmin/AbrirVentana.class
+com/mycompany/controllers/MasSuscriptoresController$info.class
+com/mycompany/interacciondb/InsertarRecepcionista.class
 com/mycompany/interacciondb/EliminarTipoSus.class
 com/mycompany/gymadmin/validarEmail.class
 com/mycompany/controllers/SuscriptoresEstadisticasController.class
+com/mycompany/interacciondb/TablaRecepcionista.class
 com/mycompany/persistencia/RutinaSus.class
 com/mycompany/persistencia/RegimenSus.class
 com/mycompany/controllers/PreciosSuscripcionesController$Numero.class
@@ -68,6 +77,7 @@ com/mycompany/persistencia/DataBase.class
 com/mycompany/persistencia/Suscripcion.class
 com/mycompany/persistencia/TransaccionesRecep_.class
 com/mycompany/controllers/CambiarInfoAdminController$1.class
+com/mycompany/interacciondb/InfoSuscriptores.class
 com/mycompany/persistencia/Instructor.class
 com/mycompany/interacciondb/TablaInstructores.class
 com/mycompany/interacciondb/InsertarInstructor$1.class
@@ -89,4 +99,5 @@ com/mycompany/gymadmin/Datos.class
 com/mycompany/persistencia/PeriodoSucId_.class
 com/mycompany/persistencia/RutinaInstructor.class
 com/mycompany/interacciondb/TablaInstruidos.class
+com/mycompany/interacciondb/llenarTablaRecepcionista.class
 com/mycompany/interacciondb/InsertarSuscripcion.class

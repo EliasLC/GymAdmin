@@ -13,22 +13,23 @@ import javafx.beans.property.StringProperty;
  * @author elias
  */
 public class TablaSuscriptores {
-    
+
     private StringProperty nombre, edad,email,colonia,mza,lote,tipoSus,fechaVen;
+    private int id;
 
     
-    public TablaSuscriptores(String nom, String paterno,String materno,Date nacimiento, String email,
+    public TablaSuscriptores(int id, String nom, String paterno,String materno,Date nacimiento, String email,
             String colonia,String mza,String lote, String tipoSus, Date fechaven){
         this.nombre = new SimpleStringProperty(nom+ " "+ paterno +" "+ materno);
         this.edad = new SimpleStringProperty(age(nacimiento));
         this.email = new SimpleStringProperty(email);
         this.colonia= new SimpleStringProperty(colonia);
-        this.mza = new SimpleStringProperty(mza);
-        this.lote= new SimpleStringProperty(lote);
-        this.tipoSus= new SimpleStringProperty(lote);
+        this.mza = new SimpleStringProperty(""+mza);
+        this.lote= new SimpleStringProperty(""+lote);
         this.fechaVen= new SimpleStringProperty(String.valueOf(obtenerDia(fechaven))+"/" +
                 String.valueOf(obtenerMes(fechaven))+"/"+ String.valueOf(obtenerAño(fechaven)));
         this.tipoSus= new SimpleStringProperty(tipoSus);
+        this.id= id;
     }
     
     
@@ -123,6 +124,12 @@ public class TablaSuscriptores {
         this.fechaVen = new SimpleStringProperty(fechaVen);
     }
   
-    
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
     
 }

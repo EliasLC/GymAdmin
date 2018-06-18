@@ -12,11 +12,14 @@ import com.mycompany.gymadmin.validarEmail;
 import com.mycompany.interacciondb.DeleteIns;
 import com.mycompany.interacciondb.InsertarAdministrador;
 import com.mycompany.interacciondb.InsertarInstructor;
+import com.mycompany.interacciondb.InsertarRecepcionista;
 import com.mycompany.interacciondb.TablaAdministradores;
 import com.mycompany.interacciondb.TablaInstructores;
+import com.mycompany.interacciondb.TablaRecepcionista;
 import com.mycompany.interacciondb.datos;
 import com.mycompany.interacciondb.llenarTablaAdm;
 import com.mycompany.interacciondb.llenarTablaInstructores;
+import com.mycompany.interacciondb.llenarTablaRecepcionista;
 import java.io.IOException;
 import java.net.URL;
 import java.util.Calendar;
@@ -81,6 +84,14 @@ public class MainController implements Initializable {
     @FXML private JFXTextField buscarIns, tNomIns,tPatIns,tMatIns,tMovIns,tFijoIns,tEmailIns,tColIns,tLoteIns,tMznIns;
     @FXML private JFXComboBox<Integer> cDiaIns, cMesIns,cAñoIns;
     
+    
+    //Objetos recepcionista
+    @FXML private TableView<TablaRecepcionista> tablaRecep;
+    @FXML private TableColumn <TablaRecepcionista, String> ColRecepNombre,ColRecepTelM,ColRecepTelF,ColRecepEdad,ColRecepDir,ColRecepEmail;
+    @FXML private JFXTextField TRecepBuscar,TRecepNombre,TRecepMaterno,TRecepPaterno,TRecepMovil,TRecepFijo,TRecepEmail,TRecepColonia,TRecepManzana,TRecepLote;
+    @FXML private JFXButton BRecepModificar,BRecepAgregar,BRecepEliminar,BRecepActualizar;
+    @FXML private ProgressIndicator progRecepTabla,progRecepTran;
+    @FXML private JFXComboBox<Integer> CRecepDia,CRecepMes,CRecepAno;
 
 //Listas
     private ObservableList<Integer> dias;
@@ -106,6 +117,7 @@ public class MainController implements Initializable {
        if(Datos.getDatos().getStatus()==1){
            tabPane.getTabs().remove(tabAdministradores);
        }
+       insertarRecep();
        Date d= new Date();
        Mfecha.setText("Fecha: "+String.valueOf(obtenerDia(d))+"/"+String.valueOf(obtenerMes(d))
                +"/"+String.valueOf(obtenerAño(d)));
@@ -141,10 +153,11 @@ public class MainController implements Initializable {
        for(int i= 1950; i<=cal.get(Calendar.YEAR); i++){
         año.add(i);
        }
+      CRecepDia.setItems(dias); CRecepMes.setItems(meses); CRecepAno.setItems(año);
       cDiaIns.setItems(dias); cMesIns.setItems(meses); cAñoIns.setItems(año);
       diaAdmin.setItems(dias); mesAdmin.setItems(meses); añoAdmin.setItems(año);
       datosModAdm(); quitar(); actTableAdm(); eliminarAdm();
-      insertarInstructor(); instruidos();
+      insertarInstructor(); instruidos(); actualizarTablaRep();
     }
     
          private int obtenerDia(Date date){
@@ -186,7 +199,7 @@ public class MainController implements Initializable {
             }
             
             if(newValue.equals(tabRecepcionista)){
-                
+                llenarTablaRecepcionista();
             }
             
             if(newValue.equals(tabAdministradores)){
@@ -225,6 +238,99 @@ public class MainController implements Initializable {
             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//END
+    
+    /* ****************************************Metodos Recepcionista**************************************** */
+        
+        //Metodo para insertar un nuevo usuario
+        private void insertarRecep(){
+            BRecepAgregar.setOnAction((e)->{
+                if(TRecepNombre.getText().equals("")||TRecepPaterno.getText().equals("")||
+                   TRecepMaterno.getText().equals("")||TRecepMovil.getText().equals("")||
+                   TRecepEmail.getText().equals("")||TRecepColonia.getText().equals("")||
+                   CRecepDia.getValue()==null||CRecepMes.getValue()==null|| CRecepAno.getValue()==null){
+                    Alertas.error("Error de ingreso", "", "Se encuentran campos vacios");
+                } else{
+                    bloquearRecep(true); progRecepTran.setVisible(true);
+                    String fecha = String.valueOf(CRecepAno.getValue())+"-"
+                    +String.valueOf(CRecepMes.getValue())+"-"+String.valueOf(CRecepDia.getValue());
+                    
+                    InsertarRecepcionista ir = new InsertarRecepcionista (TRecepNombre.getText(),TRecepPaterno.getText(),
+                    TRecepMaterno.getText(),TRecepMovil.getText(),TRecepFijo.getText(),fecha,TRecepEmail.getText(),
+                    TRecepColonia.getText(),TRecepManzana.getText(),TRecepLote.getText());
+                    
+                    ir.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent el)->{
+                        int res = ir.getValue();
+                        
+                        switch(res){
+                            case 0:Alertas.informacion("Registro Exitoso", "El registro se ha realizado correctamente");
+                                    TRecepNombre.setText("");  TRecepPaterno.setText(""); TRecepMaterno.setText("");
+                                    TRecepMovil.setText(""); TRecepFijo.setText("");TRecepEmail.setText(""); 
+                                    TRecepColonia.setText(""); TRecepManzana.setText(""); TRecepLote.setText("");
+                                    CRecepAno.setValue(null); CRecepMes.setValue(null); CRecepDia.setValue(null);  
+                                    llenarTablaRecepcionista();
+                                    break;
+                            case 1:  Alertas.error("Error de registro", "Correo electronico invalido","El correo electronico se encuentra utilizdo por otro usuario. Introdusca uno nuevo."); 
+                                     TRecepEmail.setText(""); TRecepEmail.requestFocus();
+                                break;
+                            case 2:  Alertas.error("Error de registro", "No fue posible realizar el registor","Verifique su conexion a internet"); 
+                                break;
+                        }
+                        bloquearRecep(false); progRecepTran.setVisible(false);
+                    });
+                    new Thread(ir).start();
+                }
+            });
+        }
+    
+        //Metodo para actualizar la tabla
+        private void actualizarTablaRep(){
+            BRecepActualizar.setOnAction((e)->{
+                llenarTablaRecepcionista();
+            });
+        }
+    
+        //Metodo para llenar la tabla
+        private void llenarTablaRecepcionista(){
+            bloquearRecep(true); progRecepTabla.setVisible(true);
+            
+            llenarTablaRecepcionista ltr = new llenarTablaRecepcionista();
+            ltr.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent e)->{
+                ObservableList<TablaRecepcionista> items = ltr.getValue();
+                tablaRecep.setItems(items);
+                ColRecepNombre.setCellValueFactory(new PropertyValueFactory<>("nombre"));
+                ColRecepTelM.setCellValueFactory(new PropertyValueFactory<>("telmovil"));
+                ColRecepTelF.setCellValueFactory(new PropertyValueFactory<>("telfijo"));
+                ColRecepEdad.setCellValueFactory(new PropertyValueFactory<>("edad"));
+                ColRecepDir.setCellValueFactory(new PropertyValueFactory<>("direccion"));
+                ColRecepEmail.setCellValueFactory(new PropertyValueFactory<>("email"));
+                
+                FilteredList<TablaRecepcionista> datos = new FilteredList <> (items, a -> true);
+                TRecepBuscar.setOnKeyReleased(el->{
+                TRecepBuscar.textProperty().addListener((observable, oldValue, newValue) ->{
+                datos.setPredicate((Predicate <? super TablaRecepcionista>) ins -> {
+
+                       if(newValue == null || newValue.isEmpty()){
+                           return true;
+                       }
+                       String lower = newValue.toLowerCase();
+                       return ins.getNombre().toLowerCase().contains(lower);
+                   });
+                });
+                });
+                SortedList<TablaRecepcionista> dataCam = new SortedList<>(datos);
+                dataCam.comparatorProperty().bind(tablaRecep.comparatorProperty());
+                tablaRecep.setItems(dataCam);
+                bloquearRecep(false); progRecepTabla.setVisible(false);
+            });
+            new Thread(ltr).start();
+        }
+        
+        //Metodo para bloquear los elementos de la tabla
+        private void bloquearRecep(boolean input){
+            TRecepBuscar.setDisable(input); BRecepAgregar.setDisable(input);
+            BRecepActualizar.setDisable(input);
+        }
+    /* ****************************************Fin metodos Recepcionista**************************************** */
     
     
 /* ****************************************Metodo Instructores**************************************** */    

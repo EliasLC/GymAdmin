@@ -57,32 +57,21 @@ public class Direccion_INS implements Serializable {
         this.colonia = colonia;
     }
 
-    /**
-     * @return the manzana
-     */
+
     public String getManzana() {
         return manzana;
     }
-
-    /**
-     * @param manzana the manzana to set
-     */
+    
     public void setManzana(String manzana) {
         this.manzana = manzana;
     }
 
-    /**
-     * @return the lote
-     */
+  
     public String getLote() {
         return lote;
     }
 
-    /**
-     * @param lote the lote to set
-     */
     public void setLote(String lote) {
         this.lote = lote;
     }
-
 }

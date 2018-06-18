@@ -23,7 +23,7 @@ public class llenarTablaSuscriptores extends Task<ObservableList<TablaSuscriptor
         try{
             EntityManager manager = DataBase.getEMF().createEntityManager();
             manager.getTransaction().begin();
-            Query result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.TablaSuscriptores(a.susNom,a.sUSAPat, a.sUSAMat,a.sUSFechaNA,a.susEmail,b.colonia, b.manzana,b.lote,d.tsucNom,c.sucFfp)  FROM Suscriptor a, Direccion_SUS b,Suscripcion c,TipoSuc d WHERE a.susId = b.suscriptor.susId AND c.sucSusid = a.susId AND c.sucTsuc = d.tsucId AND c.sucFfp >= :final");
+            Query result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.TablaSuscriptores(a.susId,a.susNom,a.sUSAPat, a.sUSAMat,a.sUSFechaNA,a.susEmail,b.colonia, b.manzana,b.lote,d.tsucNom,c.sucFfp)  FROM Suscriptor a, Direccion_SUS b,Suscripcion c,TipoSuc d WHERE a.susId = b.suscriptor.susId AND c.sucSusid = a.susId AND c.sucTsuc = d.tsucId AND c.sucFfp >= :final");
             result.setParameter("final", new Date());
             res = FXCollections.observableArrayList(result.getResultList());
             manager.getTransaction().commit();

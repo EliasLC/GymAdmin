@@ -1,10 +1,12 @@
 package com.mycompany.persistencia;
 import java.io.Serializable;
 import javax.persistence.CascadeType;
+import javax.persistence.Embeddable;
 import javax.persistence.ManyToOne;
 /**
  * @author elias
  */
+@Embeddable
 public class InstruidosId implements Serializable{
     
     private Instructor instructor;
