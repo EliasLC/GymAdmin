@@ -1,6 +1,7 @@
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
@@ -8,6 +9,7 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -105,9 +107,18 @@ public class Suscriptor implements Serializable {
         this.sUSFechaNA = sUSFechaNA;
     }
     
-    @OneToMany(mappedBy="suscriptor")
-    private List<Instruidos> instructor;
+    @OneToMany(mappedBy = "primaryKey.sus", fetch = FetchType.LAZY)
+     private List<Instruidos> instructor = new ArrayList<Instruidos>();
 
+    
+    public List<Instruidos> getInstructor() {
+        return instructor;
+    }
+
+    public void setInstructor(List<Instruidos> instructor) {
+        this.instructor = instructor;
+    }
+    
     public Integer getSusId() {
         return susId;
     }
@@ -255,11 +266,4 @@ public class Suscriptor implements Serializable {
         return "com.mycompany.persistencia.Suscriptor[ susId=" + susId + " ]";
     }
 
-    /**
-     * @return the instructor
-     */
-    public List<Instruidos> getInstructor() {
-        return instructor;
-    }
-    
 }

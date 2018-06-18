@@ -4,7 +4,6 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXPasswordField;
 import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.Alertas;
-import com.mycompany.gymadmin.Datos;
 import com.mycompany.gymadmin.Stages;
 import com.mycompany.interacciondb.Ingresar;
 import java.io.IOException;

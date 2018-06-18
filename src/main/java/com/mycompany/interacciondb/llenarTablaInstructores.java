@@ -1,11 +1,8 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.interacciondb;
 
 import com.mycompany.persistencia.DataBase;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -34,7 +31,8 @@ public class llenarTablaInstructores extends Task<ObservableList<TablaInstructor
             manager.getTransaction().commit();
             manager.close(); 
         }catch(Exception e){
-           System.out.println("Error");
+            Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, e);
+            System.out.println("Error");
         }
         return res;
     }

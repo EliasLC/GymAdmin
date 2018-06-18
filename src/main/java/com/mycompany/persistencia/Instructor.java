@@ -1,17 +1,14 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -44,7 +41,6 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Instructor.findByInsTelc", query = "SELECT i FROM Instructor i WHERE i.insTelc = :insTelc")
     , @NamedQuery(name = "Instructor.findTablaInstructor", query = "SELECT NEW com.mycompany.interacciondb.TablaInstructores(i.insNom, i.insApat, i.insAm, i.insTelm, i.insTelc, i.insEmail, d.colonia, d.manzana, d.lote) FROM Instructor i, Direccion_INS d WHERE i.insStatus = :insStatus AND d.instructor.insId= i.insId")})
 public class Instructor implements Serializable {
-
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -101,8 +97,17 @@ public class Instructor implements Serializable {
         this.insFna = insFna;
     }
 
-    @OneToMany(mappedBy="instructor")
-    private List<Instruidos> suscriptores;
+    //Mapeo con Instruidos
+     @OneToMany(mappedBy = "primaryKey.instructor", fetch = FetchType.LAZY)
+     private List<Instruidos> instruidos = new ArrayList<Instruidos>();
+    
+    public List<Instruidos> getInstruidos() {
+        return instruidos;
+    }
+
+    public void setInstruidos(List<Instruidos> instruidos) {
+        this.instruidos = instruidos;
+    }
     
     public Integer getInsId() {
         return insId;
@@ -211,10 +216,6 @@ public class Instructor implements Serializable {
         this.rutinaInstructorCollection = rutinaInstructorCollection;
     }
     
-    
-    public List<Instruidos> getSuscriptores() {
-        return suscriptores;
-    }
 
     @Override
     public int hashCode() {

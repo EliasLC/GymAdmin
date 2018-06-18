@@ -1,28 +1,31 @@
 package com.mycompany.persistencia;
-
 import java.io.Serializable;
-
+import javax.persistence.CascadeType;
+import javax.persistence.ManyToOne;
 /**
- *
  * @author elias
  */
 public class InstruidosId implements Serializable{
     
-    private int insid;
-    private int susid;
+    private Instructor instructor;
+    private Suscriptor sus;
     
-    
-    @Override
-    public int hashCode() {
-    return (int)(insid + susid);
-  }
-
-    @Override
-  public boolean equals(Object object) {
-    if (object instanceof InstruidosId) {
-        InstruidosId otherId = (InstruidosId) object;
-      return (otherId.insid == this.insid) && (otherId.susid == this.susid);
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Instructor getInstructor() {
+        return instructor;
     }
-    return false;
-  }
+    
+    public void setInstructor(Instructor instructor) {
+        this.instructor = instructor;
+    }
+
+    @ManyToOne(cascade = CascadeType.ALL)
+    public Suscriptor getSus() {
+        return sus;
+    }
+
+    public void setSus(Suscriptor sus) {
+        this.sus = sus;
+    }
+    
 }

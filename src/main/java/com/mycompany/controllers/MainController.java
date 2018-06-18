@@ -4,6 +4,7 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTabPane;
 import com.jfoenix.controls.JFXTextField;
+import com.mycompany.gymadmin.AbrirVentana;
 import com.mycompany.gymadmin.Alertas;
 import com.mycompany.gymadmin.Datos;
 import com.mycompany.interacciondb.DeleteAdm;
@@ -13,6 +14,7 @@ import com.mycompany.interacciondb.InsertarAdministrador;
 import com.mycompany.interacciondb.InsertarInstructor;
 import com.mycompany.interacciondb.TablaAdministradores;
 import com.mycompany.interacciondb.TablaInstructores;
+import com.mycompany.interacciondb.datos;
 import com.mycompany.interacciondb.llenarTablaAdm;
 import com.mycompany.interacciondb.llenarTablaInstructores;
 import java.io.IOException;
@@ -104,6 +106,9 @@ public class MainController implements Initializable {
        if(Datos.getDatos().getStatus()==1){
            tabPane.getTabs().remove(tabAdministradores);
        }
+       Date d= new Date();
+       Mfecha.setText("Fecha: "+String.valueOf(obtenerDia(d))+"/"+String.valueOf(obtenerMes(d))
+               +"/"+String.valueOf(obtenerAño(d)));
        
        seleccionarInstructor();
        eliminarInstructor();
@@ -139,8 +144,27 @@ public class MainController implements Initializable {
       cDiaIns.setItems(dias); cMesIns.setItems(meses); cAñoIns.setItems(año);
       diaAdmin.setItems(dias); mesAdmin.setItems(meses); añoAdmin.setItems(año);
       datosModAdm(); quitar(); actTableAdm(); eliminarAdm();
-      insertarInstructor();
+      insertarInstructor(); instruidos();
     }
+    
+         private int obtenerDia(Date date){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                return  cal.get(Calendar.DAY_OF_MONTH);
+            }
+
+            private int obtenerMes(Date date){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                return  cal.get(Calendar.MONTH)+1;
+            }
+
+            private int obtenerAño(Date date){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                return  cal.get(Calendar.YEAR);
+            }
+    
     
       //Acciones cambio tab
     private void cambioTab(){
@@ -284,7 +308,7 @@ public class MainController implements Initializable {
     
     private void actualizarTablaIns(){
         actualizarTablaIns.setOnAction((e)->{
-           llenarTablarInstructores(); 
+               llenarTablarInstructores(); 
         });
     }
     //Validar email
@@ -366,6 +390,19 @@ public class MainController implements Initializable {
         });
     }
     
+    //Metodo para abrir la ventaana de instruidos
+    private void instruidos(){
+        insInstruidos.setOnAction((e)->{
+            insInstruidos.setDisable(true);
+            if(tablaInstructores.getSelectionModel().getSelectedItem()!=null){
+                datos.setEmail(tablaInstructores.getSelectionModel().getSelectedItem().getEmail());
+                datos.setNombre(tablaInstructores.getSelectionModel().getSelectedItem().getNombre());
+                AbrirVentana av = new AbrirVentana("/fxml/Instruidos.fxml","Instruidos");
+                new Thread(av).start();
+            }
+          
+        });
+    }
     
     
 /* ****************************************Fin metodos instructores**************************************** */    

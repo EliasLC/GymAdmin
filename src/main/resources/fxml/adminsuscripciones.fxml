@@ -12,12 +12,11 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-
-<AnchorPane id="AnchorPane" prefHeight="523.0" prefWidth="996.0" xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8.0.172" fx:controller="com.mycompany.controllers.AdminsuscripcionesController">
+<AnchorPane id="AnchorPane" fx:id="pane" prefHeight="523.0" prefWidth="996.0" xmlns="http://javafx.com/javafx/8.0.172" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.mycompany.controllers.AdminsuscripcionesController">
    <children>
-      <Pane layoutX="31.0" layoutY="57.0" prefHeight="410.0" prefWidth="333.0" style="-fx-background-color: rgb(180,180,180,0.4); -fx-background-radius: 5em; -fx-border-radius: 30;">
+      <Pane layoutX="21.0" layoutY="57.0" prefHeight="410.0" prefWidth="330.0" style="-fx-background-color: rgb(180,180,180,0.4); -fx-background-radius: 5em; -fx-border-radius: 30;">
          <children>
-            <JFXButton fx:id="agregarAdmin111" layoutX="176.0" layoutY="352.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Agregar" textFill="WHITE">
+            <JFXButton fx:id="BAgregar" layoutX="167.0" layoutY="352.0" prefHeight="45.0" prefWidth="137.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Agregar" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -29,11 +28,11 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXButton fx:id="agregarAdmin1111" layoutX="32.0" layoutY="352.0" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Modificar" textFill="WHITE">
+            <JFXButton fx:id="BModificar" disable="true" layoutX="26.0" layoutY="352.0" prefHeight="45.0" prefWidth="137.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Modificar" textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@/images/add-user.png" />
+                        <Image url="@/images/update.png" />
                      </image>
                   </ImageView>
                </graphic>
@@ -41,18 +40,19 @@
                   <Font size="18.0" />
                </font>
             </JFXButton>
-            <JFXTextField labelFloat="true" layoutX="89.0" layoutY="54.0" promptText="Nombre" />
-            <JFXTextArea labelFloat="true" layoutX="23.0" layoutY="119.0" prefHeight="178.0" prefWidth="288.0" promptText="Descripcion" />
+            <JFXTextField fx:id="TNombre" focusColor="#395368" labelFloat="true" layoutX="73.0" layoutY="61.0" prefHeight="26.0" prefWidth="176.0" promptText="Nombre" />
+            <JFXTextArea fx:id="TADesc" focusColor="#395368" labelFloat="true" layoutX="24.0" layoutY="116.0" prefHeight="178.0" prefWidth="284.0" promptText="Descripcion" />
+            <ProgressIndicator fx:id="progTrans" layoutX="133.0" layoutY="179.0" visible="false" />
          </children>
       </Pane>
-      <TableView layoutX="389.0" layoutY="90.0" prefHeight="357.0" prefWidth="531.0">
+      <TableView fx:id="tablaSuscripcion" layoutX="365.0" layoutY="88.0" prefHeight="360.0" prefWidth="606.0">
          <columns>
-            <TableColumn prefWidth="163.0" text="Nombre" />
-            <TableColumn prefWidth="202.0" text="Descripcion" />
-            <TableColumn prefWidth="166.0" text="Administrador" />
+            <TableColumn fx:id="ColNombre" prefWidth="129.0" text="Nombre" />
+            <TableColumn fx:id="ColDes" prefWidth="277.0" text="Descripcion" />
+            <TableColumn fx:id="ColAdm" prefWidth="199.0" text="Administrador" />
          </columns>
       </TableView>
-      <JFXButton buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="893.0" layoutY="70.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;">
+      <JFXButton fx:id="BActualizar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="923.0" layoutY="65.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;">
          <graphic>
             <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -61,7 +61,7 @@
             </ImageView>
          </graphic>
       </JFXButton>
-      <JFXButton fx:id="eliminarAdmin1" layoutX="788.0" layoutY="459.0" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: #d83529; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Eliminar" textFill="WHITE">
+      <JFXButton fx:id="BEliminar" disable="true" layoutX="833.0" layoutY="459.0" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: #d83529; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Eliminar" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -74,17 +74,8 @@
          </font>
       </JFXButton>
       <ProgressIndicator layoutX="639.0" layoutY="461.0" prefHeight="45.0" prefWidth="44.0" visible="false" />
-      <JFXTextField labelFloat="true" layoutX="432.0" layoutY="44.0" prefHeight="26.0" prefWidth="185.0" promptText="Nombre Suscripcion" />
-      <JFXButton contentDisplay="GRAPHIC_ONLY" layoutX="631.0" layoutY="37.0" prefHeight="30.0" prefWidth="30.0" style="-fx-background-color: #00af00; -fx-background-radius: 5em;" text="Button">
-         <graphic>
-            <ImageView fitHeight="30.0" fitWidth="30.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@/images/loupe.png" />
-               </image>
-            </ImageView>
-         </graphic>
-      </JFXButton>
-      <JFXButton disable="true" layoutX="703.0" layoutY="29.0" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: #9c9d9e; -fx-background-radius: 5em;" text="Precios" textFill="WHITE">
+      <JFXTextField fx:id="TBuscar" focusColor="#395368" labelFloat="true" layoutX="374.0" layoutY="41.0" prefHeight="26.0" prefWidth="251.0" promptText="Nombre Suscripcion" />
+      <JFXButton fx:id="BPrecios" disable="true" layoutX="703.0" layoutY="22.0" prefHeight="55.0" prefWidth="154.0" style="-fx-background-color: #9c9d9e; -fx-background-radius: 5em;" text="Precios" textFill="WHITE">
          <graphic>
             <ImageView fitHeight="40.0" fitWidth="40.0" pickOnBounds="true" preserveRatio="true">
                <image>
@@ -94,6 +85,19 @@
          </graphic>
          <font>
             <Font size="17.0" />
+         </font>
+      </JFXButton>
+      <ProgressIndicator fx:id="progTabla" layoutX="629.0" layoutY="253.0" prefHeight="66.0" prefWidth="64.0" visible="false" />
+      <JFXButton fx:id="BHab" layoutX="674.0" layoutY="459.0" prefHeight="50.0" prefWidth="154.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Recuperar" textFill="WHITE">
+         <graphic>
+            <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@/images/backup.png" />
+               </image>
+            </ImageView>
+         </graphic>
+         <font>
+            <Font size="18.0" />
          </font>
       </JFXButton>
    </children>

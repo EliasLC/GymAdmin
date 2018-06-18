@@ -1,7 +1,6 @@
 package com.mycompany.interacciondb;
 import com.mycompany.persistencia.Administrador;
 import com.mycompany.persistencia.DataBase;
-import com.mysql.jdbc.exceptions.MySQLIntegrityConstraintViolationException;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -24,7 +23,6 @@ import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-import org.hibernate.exception.ConstraintViolationException;
 
 /**
  *

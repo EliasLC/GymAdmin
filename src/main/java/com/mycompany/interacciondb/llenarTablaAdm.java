@@ -2,6 +2,8 @@
 package com.mycompany.interacciondb;
 
 import com.mycompany.persistencia.DataBase;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
@@ -31,6 +33,7 @@ public class llenarTablaAdm extends Task<ObservableList<TablaAdministradores>>{
             manager.getTransaction().commit();
             manager.close();
         } catch(Exception e){
+            Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, e);
             System.out.println("Error");
         }
             return res;

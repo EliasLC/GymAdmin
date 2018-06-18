@@ -1,55 +1,64 @@
 package com.mycompany.persistencia;
-
-import static com.sun.org.apache.xalan.internal.lib.ExsltDatetime.date;
 import java.io.Serializable;
 import java.util.Date;
+import javax.persistence.AssociationOverride;
+import javax.persistence.AssociationOverrides;
 import javax.persistence.Column;
+import javax.persistence.EmbeddedId;
 import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.IdClass;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.NamedQueries;
-import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
-import javax.xml.bind.annotation.XmlRootElement;
+import javax.persistence.Transient;
 
 /**
  * @author elias
  */
 @Entity
-@Table(name="Instruidos")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Instructor.findInstruidos", query = "SELECT i FROM Instruidos i WHERE i.insid = :insid")
-})
-@IdClass(InstruidosId.class)
+@Table(name="INSTRUIDOS")
+@AssociationOverrides({
+    @AssociationOverride(name = "primaryKey.instructor",
+        joinColumns = @JoinColumn(name = "INS_ID")),
+    @AssociationOverride(name = "primaryKey.sus",
+        joinColumns = @JoinColumn(name = "SUS_ID")) })
 public class Instruidos implements Serializable {
-
-  
-    @Id
-    private int insid;
-    @Id
-    private int susid;
-    @Column(name="Fecha_Inicio")
-    @Temporal(TemporalType.DATE)
+    
+    private InstruidosId primaryKey = new InstruidosId();
     private Date fechainicio;
     
-    @ManyToOne
-    @JoinColumn(name = "insid", updatable = false, insertable = false, referencedColumnName = "insId")
-    private Instructor instructor;
+    @EmbeddedId
+    public InstruidosId getPrimaryKey(){
+        return primaryKey;
+    }
     
-    @ManyToOne
-    @JoinColumn(name = "susid", updatable = false, insertable = false, referencedColumnName = "susId")
-    private Suscriptor suscriptor;
-    
-      /**
-     * @return the fechainicio
-     */
+    public void setPrimaryKey (InstruidosId primaryKey){
+        this.primaryKey= primaryKey;
+    }
+
+    @Column(name="Fecha_Inicio")
     public Date getFechainicio() {
         return fechainicio;
     }
+
+    public void setFechainicio(Date fechainicio) {
+        this.fechainicio = fechainicio;
+    } 
     
+    public void setInstructor(Instructor ins){
+        getPrimaryKey().setInstructor(ins);
+    }
+    
+    @Transient
+    public Instructor getInstrucor(){
+        return getPrimaryKey().getInstructor();
+    }
+    
+   
+    public void setSuscriptor(Suscriptor sus){
+        getPrimaryKey().setSus(sus);
+   }
+    
+    @Transient 
+    public Suscriptor getSuscriptor(){
+        return getPrimaryKey().getSus();
+    }
 }

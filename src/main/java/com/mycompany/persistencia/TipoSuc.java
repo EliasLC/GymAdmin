@@ -1,13 +1,9 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.persistencia;
-
 import java.io.Serializable;
-import java.util.Collection;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Basic;
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -20,10 +16,7 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
-
 /**
- *
  * @author elias
  */
 @Entity
@@ -33,6 +26,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "TipoSuc.findAll", query = "SELECT t FROM TipoSuc t")
     , @NamedQuery(name = "TipoSuc.findByTsucId", query = "SELECT t FROM TipoSuc t WHERE t.tsucId = :tsucId")
     , @NamedQuery(name = "TipoSuc.findByTsucNom", query = "SELECT t FROM TipoSuc t WHERE t.tsucNom = :tsucNom")
+    , @NamedQuery(name = "TipoSuc.tablaSusc", query = "SELECT NEW com.mycompany.interacciondb.TablaSuscripciones(t.tsucId,t.tsucNom, t.tsusDesc, a.admNom, a.admApat, a.admAmat) FROM TipoSuc t, Administrador a WHERE t.tsusStatus = :tsusStatus AND t.tsucAdmid = a.admId")
     , @NamedQuery(name = "TipoSuc.findByTsusDesc", query = "SELECT t FROM TipoSuc t WHERE t.tsusDesc = :tsusDesc")
     , @NamedQuery(name = "TipoSuc.findByTsusStatus", query = "SELECT t FROM TipoSuc t WHERE t.tsusStatus = :tsusStatus")})
 public class TipoSuc implements Serializable {
@@ -49,8 +43,6 @@ public class TipoSuc implements Serializable {
     private String tsusDesc;
     @Column(name = "TSUS_STATUS")
     private Integer tsusStatus;
-    @OneToMany(mappedBy = "sucTsuc")
-    private Collection<Suscripcion> suscripcionCollection;
     @JoinColumn(name = "TSUC_ADMID", referencedColumnName = "ADM_ID")
     @ManyToOne
     private Administrador tsucAdmid;
@@ -94,15 +86,6 @@ public class TipoSuc implements Serializable {
         this.tsusStatus = tsusStatus;
     }
 
-    @XmlTransient
-    public Collection<Suscripcion> getSuscripcionCollection() {
-        return suscripcionCollection;
-    }
-
-    public void setSuscripcionCollection(Collection<Suscripcion> suscripcionCollection) {
-        this.suscripcionCollection = suscripcionCollection;
-    }
-
     public Administrador getTsucAdmid() {
         return tsucAdmid;
     }
@@ -111,6 +94,11 @@ public class TipoSuc implements Serializable {
         this.tsucAdmid = tsucAdmid;
     }
 
+    
+   /* //Metodo para enlazar la realcion
+    @OneToMany(mappedBy = "primaryKey.tipoSuc", cascade = CascadeType.ALL)
+     private List<PeriodoSuc>  periodosSuc = new ArrayList<>();
+    */
     @Override
     public int hashCode() {
         int hash = 0;

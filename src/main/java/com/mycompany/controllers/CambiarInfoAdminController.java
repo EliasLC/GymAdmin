@@ -117,23 +117,23 @@ public class CambiarInfoAdminController implements Initializable {
           return res;
         }
         
-        private int obtenerDia(Date date){
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return  cal.get(Calendar.DAY_OF_MONTH);
-        }
-        
-        private int obtenerMes(Date date){
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return  cal.get(Calendar.MONTH)+1;
-        }
-            
-        private int obtenerAño(Date date){
-            Calendar cal = Calendar.getInstance();
-            cal.setTime(date);
-            return  cal.get(Calendar.YEAR);
-        }
+            private int obtenerDia(Date date){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                return  cal.get(Calendar.DAY_OF_MONTH);
+            }
+
+            private int obtenerMes(Date date){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                return  cal.get(Calendar.MONTH)+1;
+            }
+
+            private int obtenerAño(Date date){
+                Calendar cal = Calendar.getInstance();
+                cal.setTime(date);
+                return  cal.get(Calendar.YEAR);
+            }
     }
     
     private void llenarInfo(datosAdmin da){

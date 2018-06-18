@@ -1,5 +1,4 @@
 package com.mycompany.gymadmin;
-
 import com.mycompany.persistencia.Conexion;
 import java.io.IOException;
 import java.util.logging.Level;
