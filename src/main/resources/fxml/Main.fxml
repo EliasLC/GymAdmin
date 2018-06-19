@@ -149,9 +149,9 @@
             </Tab>
             <Tab fx:id="tabRecepcionista" text="Recepcionista">
                   <content>
-                <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
+                <AnchorPane fx:id="paneRecep" minHeight="0.0" minWidth="0.0" prefHeight="180.0" prefWidth="200.0">
                      <children>
-                        <Pane layoutX="14.0" layoutY="16.0" prefHeight="496.0" prefWidth="299.0" style="-fx-background-color: rgb(180,180,180,0.4); -fx-border-radius: 30;">
+                        <Pane layoutX="11.0" layoutY="16.0" prefHeight="496.0" prefWidth="299.0" style="-fx-background-color: rgb(180,180,180,0.4); -fx-border-radius: 30;">
                            <children>
                               <JFXButton fx:id="BRecepAgregar" layoutX="160.0" layoutY="437.0" prefHeight="45.0" prefWidth="129.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Agregar" textFill="WHITE">
                                  <graphic>
@@ -170,14 +170,14 @@
                               <JFXTextField fx:id="TRecepMaterno" labelFloat="true" layoutX="66.0" layoutY="97.0" promptText="Apellido Materno" />
                               <JFXTextField fx:id="TRecepMovil" labelFloat="true" layoutX="66.0" layoutY="139.0" promptText="Telefono Movil" />
                               <JFXTextField fx:id="TRecepFijo" labelFloat="true" layoutX="66.0" layoutY="181.0" promptText="Telefono Fijo" />
-                              <Label layoutX="66.0" layoutY="224.0" text="Fecha de nacimiento" />
-                              <JFXComboBox fx:id="CRecepDia" labelFloat="true" layoutX="28.0" layoutY="245.0" promptText="Dia" />
-                              <JFXComboBox fx:id="CRecepMes" labelFloat="true" layoutX="103.0" layoutY="245.0" promptText="Mes" />
-                              <JFXComboBox fx:id="CRecepAno" labelFloat="true" layoutX="185.0" layoutY="245.0" promptText="Año" />
-                              <JFXTextField fx:id="TRecepEmail" labelFloat="true" layoutX="26.0" layoutY="291.0" prefHeight="26.0" prefWidth="239.0" promptText="Correo Electronico" />
-                              <JFXTextField fx:id="TRecepColonia" labelFloat="true" layoutX="24.0" layoutY="335.0" prefHeight="26.0" prefWidth="237.0" promptText="Colonia" />
-                              <JFXTextField fx:id="TRecepManzana" labelFloat="true" layoutX="56.0" layoutY="382.0" prefHeight="26.0" prefWidth="78.0" promptText="Manzana" />
-                              <JFXTextField fx:id="TRecepLote" labelFloat="true" layoutX="151.0" layoutY="382.0" prefHeight="26.0" prefWidth="78.0" promptText="Lote" />
+                              <Label layoutX="66.0" layoutY="222.0" text="Fecha de nacimiento" />
+                              <JFXComboBox fx:id="CRecepDia" labelFloat="true" layoutX="28.0" layoutY="253.0" promptText="Dia" />
+                              <JFXComboBox fx:id="CRecepMes" labelFloat="true" layoutX="103.0" layoutY="253.0" promptText="Mes" />
+                              <JFXComboBox fx:id="CRecepAno" labelFloat="true" layoutX="185.0" layoutY="253.0" promptText="Año" />
+                              <JFXTextField fx:id="TRecepEmail" labelFloat="true" layoutX="26.0" layoutY="298.0" prefHeight="26.0" prefWidth="239.0" promptText="Correo Electronico" />
+                              <JFXTextField fx:id="TRecepColonia" labelFloat="true" layoutX="24.0" layoutY="344.0" prefHeight="26.0" prefWidth="237.0" promptText="Colonia" />
+                              <JFXTextField fx:id="TRecepManzana" labelFloat="true" layoutX="56.0" layoutY="388.0" prefHeight="26.0" prefWidth="78.0" promptText="Manzana" />
+                              <JFXTextField fx:id="TRecepLote" labelFloat="true" layoutX="151.0" layoutY="387.0" prefHeight="26.0" prefWidth="78.0" promptText="Lote" />
                               <JFXButton fx:id="BRecepModificar" disable="true" layoutX="14.0" layoutY="437.0" prefHeight="45.0" prefWidth="140.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Modificar" textFill="WHITE">
                                  <graphic>
                                     <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
@@ -202,7 +202,7 @@
                               <TableColumn fx:id="ColRecepEmail" prefWidth="197.0" text="Email" />
                            </columns>
                         </TableView>
-                        <JFXButton fx:id="BRecepEliminar" disable="true" layoutX="1014.0" layoutY="468.0" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: #d83529; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Eliminar" textFill="WHITE">
+                        <JFXButton fx:id="BRecepEliminar" disable="true" layoutX="1018.0" layoutY="468.0" prefHeight="50.0" prefWidth="137.0" style="-fx-background-color: #d83529; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Eliminar" textFill="WHITE">
                            <graphic>
                               <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -214,9 +214,8 @@
                               <Font size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXTextField fx:id="TRecepBuscar" labelFloat="true" layoutX="342.0" layoutY="43.0" prefHeight="26.0" prefWidth="233.0" promptText="Nombre Recepcionista" />
                         <ProgressIndicator fx:id="progRecepTran" layoutX="735.0" layoutY="471.0" prefHeight="44.0" prefWidth="47.0" visible="false" />
-                        <JFXButton fx:id="BRecepActualizar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="1124.0" layoutY="75.0" prefHeight="55.0" prefWidth="0.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;">
+                        <JFXButton fx:id="BRecepActualizar" buttonType="RAISED" contentDisplay="GRAPHIC_ONLY" layoutX="1104.0" layoutY="73.0" prefHeight="55.0" prefWidth="0.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;">
                            <graphic>
                               <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                                  <image>
@@ -226,6 +225,28 @@
                            </graphic>
                         </JFXButton>
                         <ProgressIndicator fx:id="progRecepTabla" layoutX="714.0" layoutY="254.0" prefHeight="73.0" prefWidth="69.0" visible="false" />
+                        <AnchorPane layoutX="325.0" layoutY="17.0" prefHeight="65.0" prefWidth="624.0" style="-fx-background-color: rgb(180,180,180,0.2); -fx-background-radius: 5em;">
+                           <children>
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="302.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/search.png" />
+                                 </image>
+                              </ImageView>
+                              <JFXTextField fx:id="TRecepBuscar" focusColor="#395368" labelFloat="true" layoutX="23.0" layoutY="18.0" prefHeight="26.0" prefWidth="261.0" promptText="Nombre Recepcionista" />
+                              <JFXButton fx:id="BRecepTran" disable="true" layoutX="399.0" layoutY="10.0" prefHeight="45.0" prefWidth="183.0" style="-fx-background-color: #395368; -fx-background-radius: 5em; -fx-border-radius: 5em;" text="Transacciones" textFill="WHITE">
+                                 <graphic>
+                                    <ImageView fitHeight="25.0" fitWidth="25.0" pickOnBounds="true" preserveRatio="true">
+                                       <image>
+                                          <Image url="@/images/cashier.png" />
+                                       </image>
+                                    </ImageView>
+                                 </graphic>
+                                 <font>
+                                    <Font size="18.0" />
+                                 </font>
+                              </JFXButton>
+                           </children>
+                        </AnchorPane>
                      </children></AnchorPane>
               </content>
                <graphic>
@@ -377,7 +398,6 @@
                               <Font size="18.0" />
                            </font>
                         </JFXButton>
-                        <JFXTextField fx:id="fnomAdm" labelFloat="true" layoutX="379.0" layoutY="41.0" prefHeight="26.0" prefWidth="294.0" promptText="Nombre o Correo de Administrador" />
                         <JFXButton fx:id="actTablaAdmin" contentDisplay="GRAPHIC_ONLY" layoutX="1091.0" layoutY="71.0" prefHeight="50.0" prefWidth="50.0" style="-fx-background-color: #35A1CD; -fx-background-radius: 5em;">
                            <graphic>
                               <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
@@ -388,6 +408,16 @@
                            </graphic>
                         </JFXButton>
                         <ProgressIndicator fx:id="progTranAdmin" layoutX="736.0" layoutY="466.0" prefHeight="44.0" prefWidth="46.0" visible="false" />
+                        <AnchorPane layoutX="371.0" layoutY="21.0" prefHeight="55.0" prefWidth="384.0" style="-fx-background-color: rgb(180,180,180,0.2); -fx-background-radius: 5em;">
+                           <children>
+                              <JFXTextField fx:id="fnomAdm" labelFloat="true" layoutX="16.0" layoutY="13.0" prefHeight="26.0" prefWidth="294.0" promptText="Nombre o Correo de Administrador" />
+                              <ImageView fitHeight="30.0" fitWidth="30.0" layoutX="326.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true">
+                                 <image>
+                                    <Image url="@/images/search.png" />
+                                 </image>
+                              </ImageView>
+                           </children>
+                        </AnchorPane>
                      </children></AnchorPane>
               </content>
                <graphic>
@@ -461,12 +491,12 @@
       </JFXTabPane>
       <AnchorPane layoutY="-2.0" prefHeight="140.0" prefWidth="1170.0" style="-fx-background-color: #395368;">
          <children>
-            <Label fx:id="admNombre" layoutX="855.0" layoutY="14.0" prefHeight="26.0" prefWidth="300.0" text="Administrador: Nombre de usuario" textFill="WHITE">
+            <Label fx:id="admNombre" layoutX="833.0" layoutY="14.0" prefHeight="26.0" prefWidth="300.0" text="Administrador: Nombre de usuario" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
             </Label>
-            <Label fx:id="Mfecha" layoutX="999.0" layoutY="52.0" text="Fecha: 12/02/2018" textFill="WHITE">
+            <Label fx:id="Mfecha" layoutX="991.0" layoutY="51.0" text="Fecha: 12/02/2018" textFill="WHITE">
                <font>
                   <Font size="14.0" />
                </font>
@@ -475,7 +505,7 @@
                <image>
                   <Image url="@/images/Logo.png" />
                </image></ImageView>
-            <JFXButton fx:id="ButtonLogout" layoutX="956.0" layoutY="74.0" prefHeight="55.0" prefWidth="183.0" ripplerFill="WHITE" text="Cerras sesión " textFill="WHITE">
+            <JFXButton fx:id="ButtonLogout" layoutX="965.0" layoutY="70.0" prefHeight="55.0" prefWidth="183.0" ripplerFill="WHITE" text="Cerras sesión " textFill="WHITE">
                <graphic>
                   <ImageView fitHeight="45.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
                     <image>

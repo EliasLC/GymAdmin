@@ -86,7 +86,7 @@ public class InsertarAdministrador extends Task<Integer> {
         try {
             return format.parse(fecha);
         } catch (ParseException ex) {
-            Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, ex);
         }
         return new Date();
     }

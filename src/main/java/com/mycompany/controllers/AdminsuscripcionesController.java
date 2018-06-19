@@ -173,7 +173,6 @@ public class AdminsuscripcionesController implements Initializable {
                    int result = ms.getValue();
                    switch (result) {
                        case 0:
-                           System.out.println("Funco");
                            Alertas.informacion("Modificacion de datos", "Los datos se han cambiado correctamente");
                            TNombre.setText(""); TADesc.setText("");
                            llenarTabla();

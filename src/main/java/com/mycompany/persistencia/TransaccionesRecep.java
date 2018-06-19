@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
@@ -49,7 +44,7 @@ public class TransaccionesRecep implements Serializable {
     private Date trFecha;
     @Basic(optional = false)
     @Column(name = "TR_IMP")
-    private double trImp;
+    private float trImp;
     @Basic(optional = false)
     @Column(name = "TR_TIPO")
     private String trTipo;
@@ -64,7 +59,7 @@ public class TransaccionesRecep implements Serializable {
         this.trId = trId;
     }
 
-    public TransaccionesRecep(Integer trId, Date trFecha, double trImp, String trTipo) {
+    public TransaccionesRecep(Integer trId, Date trFecha, float trImp, String trTipo) {
         this.trId = trId;
         this.trFecha = trFecha;
         this.trImp = trImp;
@@ -87,11 +82,11 @@ public class TransaccionesRecep implements Serializable {
         this.trFecha = trFecha;
     }
 
-    public double getTrImp() {
+    public float getTrImp() {
         return trImp;
     }
 
-    public void setTrImp(double trImp) {
+    public void setTrImp(float trImp) {
         this.trImp = trImp;
     }
 

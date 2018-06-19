@@ -3,15 +3,18 @@ package com.mycompany.persistencia;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.Date;
+import java.util.List;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
@@ -73,7 +76,7 @@ public class Recepcionista implements Serializable {
     @Column(name = "REC_STATUS")
     private Integer recStatus;
     @OneToMany(mappedBy = "trRecid")
-    private Collection<TransaccionesRecep> transaccionesRecepCollection;
+    private List<TransaccionesRecep> transaccionesRecepCollection;
 
     public Recepcionista() {
     }
@@ -173,13 +176,30 @@ public class Recepcionista implements Serializable {
     public void setRecStatus(Integer recStatus) {
         this.recStatus = recStatus;
     }
+    
+    
+    @OneToOne(mappedBy = "recepcionista",  
+              fetch = FetchType.LAZY, optional = false)
+    private Direccion_REC direccionrec;
+
+  
+    public Direccion_REC getDireccionrec() {
+        return direccionrec;
+    }
+
+    public void setDireccionrec(Direccion_REC direccionrec) {
+        this.direccionrec = direccionrec;
+    }
+
+
+
 
     @XmlTransient
-    public Collection<TransaccionesRecep> getTransaccionesRecepCollection() {
+    public List<TransaccionesRecep> getTransaccionesRecepCollection() {
         return transaccionesRecepCollection;
     }
 
-    public void setTransaccionesRecepCollection(Collection<TransaccionesRecep> transaccionesRecepCollection) {
+    public void setTransaccionesRecepCollection(List<TransaccionesRecep> transaccionesRecepCollection) {
         this.transaccionesRecepCollection = transaccionesRecepCollection;
     }
 

@@ -1,5 +1,6 @@
 com/mycompany/controllers/CambiarPassController.class
 com/mycompany/gymadmin/MainApp.class
+com/mycompany/controllers/TransaccionesRecepcionistasController.class
 com/mycompany/persistencia/Administrador_.class
 com/mycompany/persistencia/Instruidos_.class
 com/mycompany/persistencia/Conexion.class
@@ -17,6 +18,7 @@ com/mycompany/interacciondb/llenarTablaCostos.class
 com/mycompany/interacciondb/llenarTablaAdm.class
 com/mycompany/interacciondb/TablaSuscripciones.class
 com/mycompany/persistencia/PeriodoSuc_.class
+com/mycompany/interacciondb/EliminarRecepcionista.class
 com/mycompany/persistencia/RegimenSus_.class
 com/mycompany/controllers/SplashController.class
 com/mycompany/controllers/MainController.class
@@ -45,16 +47,19 @@ com/mycompany/interacciondb/habilitarSuscripcion.class
 com/mycompany/persistencia/InstruidosId.class
 com/mycompany/interacciondb/datos.class
 com/mycompany/persistencia/TipoSuc_.class
+com/mycompany/interacciondb/ModificarRecep.class
 com/mycompany/persistencia/RutinaInstructor_.class
 com/mycompany/controllers/LoginController.class
 com/mycompany/persistencia/Direccion_INS_.class
 com/mycompany/interacciondb/InsertarAdministrador$1.class
 com/mycompany/persistencia/Direccion_SUS_.class
 com/mycompany/interacciondb/CambiaPass$1.class
+com/mycompany/interacciondb/TablaTrans.class
 com/mycompany/interacciondb/extra.class
 com/mycompany/interacciondb/buscarInstruidos.class
 com/mycompany/interacciondb/llenarTablaInstructores.class
 com/mycompany/interacciondb/llenarTablaSuscripciones.class
+com/mycompany/interacciondb/llenarTablaTransaccionesRecep.class
 com/mycompany/interacciondb/CambiaPass.class
 com/mycompany/persistencia/PeriodoSucId.class
 com/mycompany/persistencia/Direccion_SUS.class
@@ -96,6 +101,7 @@ com/mycompany/interacciondb/Ingresar.class
 com/mycompany/persistencia/Recepcionista.class
 com/mycompany/persistencia/Administrador.class
 com/mycompany/gymadmin/Datos.class
+com/mycompany/interacciondb/InsertarRecepcionista$1.class
 com/mycompany/persistencia/PeriodoSucId_.class
 com/mycompany/persistencia/RutinaInstructor.class
 com/mycompany/interacciondb/TablaInstruidos.class

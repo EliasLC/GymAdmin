@@ -10,9 +10,11 @@ import com.mycompany.gymadmin.Datos;
 import com.mycompany.interacciondb.DeleteAdm;
 import com.mycompany.gymadmin.validarEmail;
 import com.mycompany.interacciondb.DeleteIns;
+import com.mycompany.interacciondb.EliminarRecepcionista;
 import com.mycompany.interacciondb.InsertarAdministrador;
 import com.mycompany.interacciondb.InsertarInstructor;
 import com.mycompany.interacciondb.InsertarRecepcionista;
+import com.mycompany.interacciondb.ModificarRecep;
 import com.mycompany.interacciondb.TablaAdministradores;
 import com.mycompany.interacciondb.TablaInstructores;
 import com.mycompany.interacciondb.TablaRecepcionista;
@@ -89,7 +91,7 @@ public class MainController implements Initializable {
     @FXML private TableView<TablaRecepcionista> tablaRecep;
     @FXML private TableColumn <TablaRecepcionista, String> ColRecepNombre,ColRecepTelM,ColRecepTelF,ColRecepEdad,ColRecepDir,ColRecepEmail;
     @FXML private JFXTextField TRecepBuscar,TRecepNombre,TRecepMaterno,TRecepPaterno,TRecepMovil,TRecepFijo,TRecepEmail,TRecepColonia,TRecepManzana,TRecepLote;
-    @FXML private JFXButton BRecepModificar,BRecepAgregar,BRecepEliminar,BRecepActualizar;
+    @FXML private JFXButton BRecepModificar,BRecepAgregar,BRecepEliminar,BRecepActualizar,BRecepTran;
     @FXML private ProgressIndicator progRecepTabla,progRecepTran;
     @FXML private JFXComboBox<Integer> CRecepDia,CRecepMes,CRecepAno;
 
@@ -100,7 +102,7 @@ public class MainController implements Initializable {
     
     //Suscriptores
     @FXML JFXButton suscriptorVisualizar,suscriptoresEstadisticas;
-    @FXML AnchorPane paneSuscriptores,paneIns;
+    @FXML AnchorPane paneSuscriptores,paneIns,paneRecep;
     
     
     //Modificar informacion
@@ -124,7 +126,10 @@ public class MainController implements Initializable {
        
        seleccionarInstructor();
        eliminarInstructor();
-    
+       seleccionarRecep();
+        eliminarRecep();
+        abrirTranRecep();
+        
         admNombre.setText("Administrador: "+Datos.getDatos().getnombre());
         actualizarTablaIns();
        
@@ -158,6 +163,7 @@ public class MainController implements Initializable {
       diaAdmin.setItems(dias); mesAdmin.setItems(meses); añoAdmin.setItems(año);
       datosModAdm(); quitar(); actTableAdm(); eliminarAdm();
       insertarInstructor(); instruidos(); actualizarTablaRep();
+      modificarRecep();
     }
     
          private int obtenerDia(Date date){
@@ -281,7 +287,91 @@ public class MainController implements Initializable {
                 }
             });
         }
-    
+ 
+        //Metodo para modificar recep
+        private void modificarRecep(){
+            BRecepModificar.setOnAction((e)->{
+                 if(TRecepNombre.getText().equals("")||TRecepPaterno.getText().equals("")||
+                   TRecepMaterno.getText().equals("")||TRecepMovil.getText().equals("")||
+                   TRecepEmail.getText().equals("")||TRecepColonia.getText().equals("")||
+                   CRecepDia.getValue()==null||CRecepMes.getValue()==null|| CRecepAno.getValue()==null){
+                    Alertas.error("Error de ingreso", "", "Se encuentran campos vacios");
+                } else{
+                      BRecepEliminar.setDisable(true); BRecepModificar.setDisable(true);
+                      bloquearRecep(true); progRecepTran.setVisible(true); BRecepTran.setDisable(true);
+                      String fecha = String.valueOf(CRecepAno.getValue())+"-"
+                      +String.valueOf(CRecepMes.getValue())+"-"+String.valueOf(CRecepDia.getValue());
+                      
+                      ModificarRecep mr = new ModificarRecep(
+                              tablaRecep.getSelectionModel().getSelectedItem().getId(),TRecepNombre.getText(),
+                      TRecepPaterno.getText(),TRecepMaterno.getText(),TRecepMovil.getText(),TRecepFijo.getText(),
+                      TRecepEmail.getText(),TRecepColonia.getText(),TRecepManzana.getText(),TRecepLote.getText(),
+                      fecha);
+                      
+                      mr.addEventHandler((WorkerStateEvent.WORKER_STATE_SUCCEEDED), (WorkerStateEvent el)->{
+                          int result = mr.getValue();
+                          
+                          switch(result){
+                             
+                              case 1: Alertas.informacion("Modificacion de datos", "Los datos se han cambiado correctamente");
+                                      llenarTablaRecepcionista();
+                                      blanRecep();
+                                  break;
+                              case 2: Alertas.error("Error", "Error de usuario", "El usuario a modificar no se encuentra activo");
+                                      blanRecep();
+                                      llenarTablaRecepcionista();
+                                  break;
+                                  
+                              case 3: Alertas.error("Error de conexion", "Error de servidor", "Imposible conectar con el servidor verifique su conexion a Internet");
+                                      TRecepNombre.requestFocus();
+                              break;
+                                  
+                          }
+                           bloquearRecep(false); progRecepTran.setVisible(false);
+                      });
+                      new Thread(mr).start();
+                 }
+            });
+        }
+
+        //Metodo para eliminar recep
+        private void eliminarRecep(){
+            BRecepEliminar.setOnAction((e)->{
+                 bloquearRecep(true); BRecepEliminar.setDisable(true); BRecepModificar.setDisable(true);
+                EliminarRecepcionista er = new EliminarRecepcionista(tablaRecep.getSelectionModel().getSelectedItem().getEmail());
+                progRecepTran.setVisible(true); BRecepTran.setDisable(true);
+                er.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent el)->{
+                    int res = er.getValue();
+                    
+                    switch(res){
+                    
+                        case 0: Alertas.informacion("Eliminacion exitosa", "El registro se ha eliminado correctamente");
+                                blanRecep();
+                                llenarTablaRecepcionista();
+                            break;
+                        case 1: Alertas.error("Error", "Erro de usuario","El usuario no se encuentra en la base de datos");  
+                                blanRecep();
+                                llenarTablaRecepcionista();
+                            break;
+                        case 2:  Alertas.error("Error de servidor", "No fue posible realizar la eliminacion","Verifique su conexion a internet"); 
+                            break;
+                    }
+                     progRecepTran.setVisible(false);
+                     bloquearRecep(false);
+                });
+                new Thread(er).start();
+            });
+        }
+        
+        //Metodo para borrar datos en los elementos
+        private void blanRecep(){
+              TRecepNombre.setText("");
+            TRecepPaterno.setText(""); TRecepPaterno.setText(""); TRecepMaterno.setText("");
+            TRecepMovil.setText(""); TRecepFijo.setText(""); CRecepDia.setValue(null);
+            CRecepMes.setValue(null); CRecepAno.setValue(null); TRecepEmail.setText("");
+            TRecepColonia.setText(""); TRecepManzana.setText(""); TRecepLote.setText("");
+        }
+        
         //Metodo para actualizar la tabla
         private void actualizarTablaRep(){
             BRecepActualizar.setOnAction((e)->{
@@ -325,10 +415,55 @@ public class MainController implements Initializable {
             new Thread(ltr).start();
         }
         
+        //Metodo para abrir la nueva ventana
+            private void abrirTranRecep(){
+                BRecepTran.setOnAction((e)->{
+                    BRecepTran.setDisable(true); BRecepActualizar.setDisable(true); BRecepEliminar.setDisable(true);
+                    datos.setNombre(tablaRecep.getSelectionModel().getSelectedItem().getNombre());
+                    datos.setEmail(tablaRecep.getSelectionModel().getSelectedItem().getTelmovil());
+                    datos.setId(tablaRecep.getSelectionModel().getSelectedItem().getId());
+                    AbrirVentana av = new AbrirVentana("/fxml/TransaccionesRecepcionistas.fxml","Transacciones");
+                    new Thread(av).start();
+                    bloquearRecep(false); blanRecep();
+                    tablaRecep.getSelectionModel().clearSelection();
+                });
+            }
+        
         //Metodo para bloquear los elementos de la tabla
         private void bloquearRecep(boolean input){
             TRecepBuscar.setDisable(input); BRecepAgregar.setDisable(input);
             BRecepActualizar.setDisable(input);
+        }
+        
+        
+        
+        private void seleccionarRecep(){
+                 tablaRecep.getSelectionModel().selectedItemProperty().addListener((ObservableValue<? extends TablaRecepcionista> 
+                observable, TablaRecepcionista oldValue, TablaRecepcionista newValue) -> {
+            
+            if(newValue != null){
+               BRecepAgregar.setDisable(true); BRecepActualizar.setDisable(true); TRecepBuscar.setDisable(true);
+               BRecepModificar.setDisable(false);BRecepEliminar.setDisable(false); BRecepTran.setDisable(false);
+               TRecepNombre.setText(tablaRecep.getSelectionModel().getSelectedItem().getNom());
+               TRecepPaterno.setText(tablaRecep.getSelectionModel().getSelectedItem().getPaterno());
+               TRecepMaterno.setText(tablaRecep.getSelectionModel().getSelectedItem().getMaterno());
+               TRecepMovil.setText(tablaRecep.getSelectionModel().getSelectedItem().getTelmovil());
+               TRecepFijo.setText(tablaRecep.getSelectionModel().getSelectedItem().getTelfijo());
+               CRecepDia.setValue(Integer.valueOf(tablaRecep.getSelectionModel().getSelectedItem().getDia()));
+               CRecepMes.setValue(Integer.valueOf(tablaRecep.getSelectionModel().getSelectedItem().getMes()));
+               CRecepAno.setValue(Integer.valueOf(tablaRecep.getSelectionModel().getSelectedItem().getAño()));
+               TRecepEmail.setText(tablaRecep.getSelectionModel().getSelectedItem().getEmail());
+               TRecepColonia.setText(tablaRecep.getSelectionModel().getSelectedItem().getColonia());
+               TRecepManzana.setText(tablaRecep.getSelectionModel().getSelectedItem().getManzana());
+               TRecepLote.setText(tablaRecep.getSelectionModel().getSelectedItem().getLote());
+            }
+        }); 
+                 
+        paneRecep.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e)->{
+            BRecepAgregar.setDisable(false); BRecepActualizar.setDisable(false); TRecepBuscar.setDisable(false);
+            BRecepModificar.setDisable(true);BRecepEliminar.setDisable(true);
+            tablaRecep.getSelectionModel().clearSelection(); blanRecep(); BRecepTran.setDisable(true);
+        });
         }
     /* ****************************************Fin metodos Recepcionista**************************************** */
     

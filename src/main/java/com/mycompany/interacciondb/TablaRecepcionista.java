@@ -18,12 +18,12 @@ public class TablaRecepcionista {
             direccion,mes,dia,año;
     
     
-    public TablaRecepcionista(String nom,String paterno,String materno,String email,Date nacimiento,
+    public TablaRecepcionista(int id,String nom,String paterno,String materno,String email,Date nacimiento,
             String telfijo,String telmovil,String colonia,String mza, String lote){
-        
+       
         this.nom=nom; this.materno=materno; this.paterno= paterno; this.nombre= nom+" "+ paterno+" "+ materno;
         this.email=email; this.telfijo= telfijo; this.telmovil= telmovil; this.colonia= colonia; this.manzana= mza;
-        this.lote= lote; this.direccion= this.colonia+" M#"+mza+" L#"+lote;
+        this.lote= lote; this.direccion= this.colonia+" M#"+mza+" L#"+lote;  this.id=id;
         this.dia = String.valueOf(obtenerDia(nacimiento)); this.mes= String.valueOf(obtenerMes(nacimiento));
         this.año= String.valueOf(obtenerAño(nacimiento)); this.edad= age(nacimiento);
     }

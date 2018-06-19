@@ -1,5 +1,4 @@
 package com.mycompany.interacciondb;
-
 import com.mycompany.persistencia.DataBase;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -26,7 +25,7 @@ public class llenarTablaRecepcionista extends Task<ObservableList<TablaRecepcion
         try{
             EntityManager manager = DataBase.getEMF().createEntityManager();
             manager.getTransaction().begin();
-            Query result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.TablaRecepcionista (a.recNom,a.recApat,a.recAmat,a.recEmail,a.recFna,a.recTelc,a.recTelm,b.colonia,b.manzana,b.lote) FROM Recepcionista a, Direccion_REC b WHERE a.recId = b.recepcionista.recId AND a.recStatus= :status");
+            Query result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.TablaRecepcionista (a.recId,a.recNom,a.recApat,a.recAmat,a.recEmail,a.recFna,a.recTelc,a.recTelm,b.colonia,b.manzana,b.lote) FROM Recepcionista a, Direccion_REC b WHERE a.recId = b.recepcionista.recId AND a.recStatus= :status");
             result.setParameter("status", 1);
             lista= FXCollections.observableArrayList(result.getResultList());
             manager.getTransaction().commit();
