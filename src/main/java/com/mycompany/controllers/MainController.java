@@ -7,8 +7,9 @@ import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.AbrirVentana;
 import com.mycompany.gymadmin.Alertas;
 import com.mycompany.gymadmin.Datos;
-import com.mycompany.interacciondb.DeleteAdm;
+import com.mycompany.gymadmin.Validar;
 import com.mycompany.gymadmin.validarEmail;
+import com.mycompany.interacciondb.DeleteAdm;
 import com.mycompany.interacciondb.DeleteIns;
 import com.mycompany.interacciondb.EliminarRecepcionista;
 import com.mycompany.interacciondb.InsertarAdministrador;
@@ -72,7 +73,7 @@ public class MainController implements Initializable {
     @FXML private JFXComboBox<Integer> diaAdmin, mesAdmin, añoAdmin;
     @FXML private AnchorPane admPane; 
    
-    
+  
     //Objetos Instructores
     @FXML private TableView<TablaInstructores> tablaInstructores;
     @FXML private TableColumn <TablaInstructores, String> colNombreIns;
@@ -86,6 +87,9 @@ public class MainController implements Initializable {
     @FXML private JFXTextField buscarIns, tNomIns,tPatIns,tMatIns,tMovIns,tFijoIns,tEmailIns,tColIns,tLoteIns,tMznIns;
     @FXML private JFXComboBox<Integer> cDiaIns, cMesIns,cAñoIns;
     
+    public void val(){
+        
+    }
     
     //Objetos recepcionista
     @FXML private TableView<TablaRecepcionista> tablaRecep;
@@ -106,7 +110,7 @@ public class MainController implements Initializable {
     
     
     //Modificar informacion
-    @FXML JFXButton modInfo,modpass;
+    @FXML JFXButton modInfo,modpass,IngresarSuscriptores;
     @FXML AnchorPane paneinfo;
         
     //Suscripciones
@@ -116,6 +120,19 @@ public class MainController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Validar.TextFieldLetras(TRecepNombre); Validar.setTextFieldLimit(TRecepLote, 5);
+        Validar.TextFieldLetras(TRecepMaterno);
+        Validar.TextFieldLetras(TRecepPaterno);
+        Validar.TextFieldLetras(TRecepColonia);
+        Validar.setTextFieldLimit(TRecepManzana, 5);Validar.TextFieldLetras(tNomIns); Validar.TextFieldNumeros(tMovIns);
+        Validar.TextFieldLetras(tPatIns); Validar.TextFieldNumeros(tFijoIns);
+        Validar.TextFieldLetras(tMatIns);
+        Validar.TextFieldLetras(tColIns);
+         Validar.TextFieldLetras(nAdmin);  Validar.TextFieldLetras(ApePatAdmin);
+        Validar.TextFieldLetras(ApeMatAdmin); Validar.TextFieldNumeros(TMovAdmin);
+        Validar.TextFieldNumeros(TfijoAdmin);
+        
+        
        if(Datos.getDatos().getStatus()==1){
            tabPane.getTabs().remove(tabAdministradores);
        }
@@ -155,7 +172,7 @@ public class MainController implements Initializable {
        for(int i=1; i<13; i++){
         meses.add(i);
        }
-       for(int i= 1950; i<=cal.get(Calendar.YEAR); i++){
+       for(int i= 1910; i<=cal.get(Calendar.YEAR); i++){
         año.add(i);
        }
       CRecepDia.setItems(dias); CRecepMes.setItems(meses); CRecepAno.setItems(año);
@@ -240,13 +257,14 @@ public class MainController implements Initializable {
             fd.setFromValue(0); fd.setToValue(1);
             fd.setCycleCount(1);
             fd.play();
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(MainController.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//END
     
     /* ****************************************Metodos Recepcionista**************************************** */
         
+    
         //Metodo para insertar un nuevo usuario
         private void insertarRecep(){
             BRecepAgregar.setOnAction((e)->{
@@ -845,6 +863,10 @@ public class MainController implements Initializable {
         suscriptoresEstadisticas.setOnAction((e)->{
             cambiarPane("/fxml/SuscriptoresEstadisticas.fxml",paneSuscriptores);
         });
+        
+         IngresarSuscriptores.setOnAction((e)->{
+            cambiarPane("/fxml/Ingresar.fxml",paneSuscriptores);
+        });
     }
     
     //Modificar suscripcion
@@ -856,7 +878,11 @@ public class MainController implements Initializable {
         adminEstadisticas.setOnAction((e)->{
             cambiarPane("/fxml/EstadisticasAdmin.fxml",paneSuscripcion);
         });
+        
+       
     }
+    
+   
  /* ****************************************Fin Metodos Suscriptores**************************************** */   
       
 }

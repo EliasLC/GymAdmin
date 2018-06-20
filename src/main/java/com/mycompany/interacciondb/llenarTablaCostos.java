@@ -1,10 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package com.mycompany.interacciondb;
-
 import com.mycompany.persistencia.DataBase;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -13,7 +7,6 @@ import javafx.collections.ObservableList;
 import javafx.concurrent.Task;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
-
 /**
  *
  * @author elias
@@ -36,7 +29,7 @@ public class llenarTablaCostos extends Task<ObservableList<TablaPrecios>>{
         try{
             EntityManager manager = DataBase.getEMF().createEntityManager();
             manager.getTransaction().begin();
-            Query result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.TablaPrecios(p.psDuracion, p.psCosto) FROM PeriodoSuc p WHERE p.primaryKey.psTscid = :tsucId");
+            Query result = manager.createQuery("SELECT NEW com.mycompany.interacciondb.TablaPrecios(p.ptDuracion, p.ptPrecio) FROM PeriodoTiposuc p WHERE p.tsucId.tsucId = :tsucId");
             result.setParameter("tsucId", id);
             res= FXCollections.observableArrayList(result.getResultList());
             manager.getTransaction().commit();

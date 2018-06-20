@@ -53,7 +53,7 @@ public class AdminsuscripcionesController implements Initializable {
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
-        llenarTabla(); seleccionar(); modificar();
+        llenarTabla();seleccionar(); modificar();
         actualizarTabla(); eliminar(); insertar();
         recuperarSuc(); costos();   
     }    

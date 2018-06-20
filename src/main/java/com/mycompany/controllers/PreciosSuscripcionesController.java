@@ -3,6 +3,9 @@ import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXComboBox;
 import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.Alertas;
+import com.mycompany.gymadmin.Validar;
+import com.mycompany.interacciondb.EliminarCosto;
+import com.mycompany.interacciondb.InsertarPrecio;
 import com.mycompany.interacciondb.ModIAdm;
 import com.mycompany.interacciondb.ModPrecios;
 import com.mycompany.interacciondb.TablaPrecios;
@@ -38,7 +41,7 @@ import javax.persistence.Query;
  */
 public class PreciosSuscripcionesController implements Initializable {
 
-    @FXML private Label LSuscripcion,LNumero;
+    @FXML private Label LSuscripcion;
 
     @FXML private TableView<TablaPrecios> tablaPrecio;
 
@@ -54,16 +57,50 @@ public class PreciosSuscripcionesController implements Initializable {
     
     @FXML private JFXTextField TCosto;
     
-    private double viejo;
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        ObservableList<String> opciones = FXCollections.observableArrayList();
-       opciones.add("Semana"); opciones.add("2 Semanas"); opciones.add("Mes");
+       opciones.add( "1 Semanas"); opciones.add("2 Semanas"); opciones.add("1 Mes");
        opciones.add("3 Meses"); opciones.add("6 meses"); opciones.add("Año");
        ComPTiempo.setItems(opciones); LSuscripcion.setText(LSuscripcion.getText()+" "+datos.getNombre());
-       llenar(); numero(); seleccionar(); actualizar(); modificar();
+       llenar(); Validar.TextFieldNumeros(TCosto); Validar.setTextFieldLimit(TCosto, 4);
+       //numero();
+       seleccionar(); actualizar();  modificar(); insertar(); eliminar();
     }  
+    
+    //Metodo para insertar
+    private void insertar(){
+        BAgregar.setOnAction((e)->{
+            if(ComPTiempo.getValue()==null||TCosto.getText().equals("")){
+                 Alertas.error("Error de captura", "", "Se encuentran campos vacios");
+            }else{
+                bloquear(true); progTabla.setVisible(false); 
+                progTran.setVisible(true);
+        
+                InsertarPrecio ip = new InsertarPrecio(datos.getId(),
+                        ComPTiempo.getSelectionModel().getSelectedItem(),Float.valueOf(TCosto.getText()));
+                
+                ip.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent el)->{
+                int res= ip.getValue();
+            
+                switch(res){
+                    case 0: Alertas.informacion("Registro Exitoso", "El registro se ha ingresodo correctamente");
+                            ComPTiempo.setValue(null); TCosto.setText("");llenar(); 
+                        break;
+                    case 1: Alertas.error("Error de insercion", "Registro existente", "Ya se encuentra un precio para ese periodo de tiempo ");   
+                           ComPTiempo.setValue(null); TCosto.setText("");llenar(); 
+                        break;
+                    case 2: Alertas.error("Error de conexion", "Error de usuario", "Verifique su conexion a internet");  
+                        break;
+                }
+                bloquear(false); progTran.setVisible(false);
+            });
+            new Thread(ip).start();
+            }
+        });
+       
+    }
     
     //Metodo para modificar datos
     private void modificar(){
@@ -75,7 +112,8 @@ public class PreciosSuscripcionesController implements Initializable {
                 BModificar.setDisable(true); BEliminar.setDisable(true);
                 bloquear(true); progTabla.setVisible(false); progTran.setVisible(true); 
                 
-                ModPrecios mp = new ModPrecios(datos.getId(), ComPTiempo.getSelectionModel().getSelectedItem(), viejo,Double.valueOf(TCosto.getText()));
+                ModPrecios mp = new ModPrecios(datos.getId(), tablaPrecio.getSelectionModel().getSelectedItem().getDuracion()
+                        ,Float.valueOf(TCosto.getText()));
                 mp.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent ea)->{
                     int res = mp.getValue();
                     
@@ -84,13 +122,14 @@ public class PreciosSuscripcionesController implements Initializable {
                                 llenar(); 
                             break;
                         case 1: Alertas.error("Error de registro", "Registro", "Registro previamente eliminado");  
-                            llenar(); 
+                                 llenar(); 
                             break;
                         case 2: Alertas.error("Error de conexion", "Error de usuario", "Verifique su conexion a internet");  
                             break;
                     }
-                    
                 bloquear(false); progTran.setVisible(false);
+                ComPTiempo.setValue(null); TCosto.setText("");
+                tablaPrecio.getSelectionModel().clearSelection();
                 });
                 new Thread(mp).start();
             }
@@ -98,14 +137,34 @@ public class PreciosSuscripcionesController implements Initializable {
         });
     }
     
-    
-    //Metodo para conocer el numero
-    private void numero(){
-        Numero n = new Numero();
-        n.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent e)->{
-            LNumero.setText(LNumero.getText()+" "+String.valueOf(n.getValue()));
+    //Metodo para eliminar 
+    private void eliminar(){
+        BEliminar.setOnAction((e)->{
+            BModificar.setDisable(true); BEliminar.setDisable(true);
+            bloquear(true); progTabla.setVisible(false); progTran.setVisible(true); 
+            EliminarCosto el = new EliminarCosto();
+            el.setId(datos.getId());
+            el.setDuracion(tablaPrecio.getSelectionModel().getSelectedItem().getDuracion());
+            
+            el.addEventHandler(WorkerStateEvent.WORKER_STATE_SUCCEEDED, (WorkerStateEvent ep)->{
+                int res = el.getValue();
+                 switch(res){
+                        case 0: Alertas.informacion("Eliminacion Exitosa", "El registro se ha eliminado correctamente");
+                                llenar(); 
+                            break;
+                        case 1: Alertas.error("Error de registro", "Registro", "Registro previamente eliminado");  
+                            llenar(); 
+                            break;
+                        case 2: Alertas.error("Error de conexion", "Error de usuario", "Verifique su conexion a internet");  
+                            break;
+                    }
+                  bloquear(false); progTran.setVisible(false);
+                  ComPTiempo.setValue(null); TCosto.setText("");
+                  tablaPrecio.getSelectionModel().clearSelection();
+            });
+            new Thread(el).start();
         });
-        new Thread(n).start();
+        
     }
     
     //Metodo para llenar la tabla
@@ -145,7 +204,6 @@ public class PreciosSuscripcionesController implements Initializable {
             if(newValue!=null){
                 BEliminar.setDisable(false); BModificar.setDisable(false);
                 BAgregar.setDisable(true);
-                viejo= Double.valueOf(tablaPrecio.getSelectionModel().getSelectedItem().getPrecio());
                 TCosto.setText(tablaPrecio.getSelectionModel().getSelectedItem().getPrecio());
                 ComPTiempo.setValue(tablaPrecio.getSelectionModel().getSelectedItem().getDuracion());
             }
@@ -153,37 +211,7 @@ public class PreciosSuscripcionesController implements Initializable {
         
         pane.addEventHandler(MouseEvent.MOUSE_PRESSED, (MouseEvent e)->{
             BEliminar.setDisable(true); BModificar.setDisable(true);
-            BAgregar.setDisable(false);
+            BAgregar.setDisable(false); tablaPrecio.getSelectionModel().clearSelection();
         });
-    }
-    
-    
-    //Clase para buscar el numero de suscriptores
-    private class Numero extends Task<Integer>{
-
-        @Override
-        protected Integer call() throws Exception {
-            return num();
-        }
-        
-        //Metodo para obtener el numero de suscripciones que tiene un tippo de suscipciones
-        private int num(){
-            int res =0;
-            try{
-                EntityManager manager = DataBase.getEMF().createEntityManager();
-                manager.getTransaction().begin();
-                Query result = manager.createQuery("SELECT s FROM  Suscripcion s WHERE s.sucFfp >= :fecha AND s.sucTsuc.tsucId = :id ");
-                result.setParameter("fecha", new Date());
-                result.setParameter("id", datos.getId());
-                List<Suscriptor> sus =  result.getResultList();
-                res = sus.size();
-                manager.getTransaction().commit();
-                manager.close();
-            }catch(Exception e){
-                Logger.getLogger(ModIAdm.class.getName()).log(Level.SEVERE, null, e);
-            }
-            return res;
-        }
-        
     }
 }

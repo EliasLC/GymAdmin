@@ -24,19 +24,14 @@
             </Label>
          </children>
       </AnchorPane>
-      <Pane layoutX="19.0" layoutY="77.0" prefHeight="71.0" prefWidth="574.0" style="-fx-background-color: rgb(180,180,180,0.7);">
+      <Pane layoutX="19.0" layoutY="77.0" prefHeight="71.0" prefWidth="574.0" style="-fx-background-color: rgb(180,180,180,0.7); -fx-background-radius: 5em;">
          <children>
             <ImageView fitHeight="60.0" fitWidth="60.0" layoutX="20.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@/images/creditcard.png" />
                </image>
             </ImageView>
-            <Label fx:id="LSuscripcion" layoutX="89.0" layoutY="9.0" prefHeight="21.0" prefWidth="376.0" text="Suscripcion: ">
-               <font>
-                  <Font size="16.0" />
-               </font>
-            </Label>
-            <Label fx:id="LNumero" layoutX="89.0" layoutY="36.0" text="Numero de Suscriptores: ">
+            <Label fx:id="LSuscripcion" layoutX="89.0" layoutY="25.0" prefHeight="21.0" prefWidth="376.0" text="Suscripcion: ">
                <font>
                   <Font size="16.0" />
                </font>

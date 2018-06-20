@@ -54,12 +54,7 @@ public class VisualizarSuscriptorController implements Initializable {
         BMas.setOnAction((e)->{
             
              datos.setId(tablaUsuarios.getSelectionModel().getSelectedItem().getId());
-             extra.setNombre(tablaUsuarios.getSelectionModel().getSelectedItem().getNombre());
-             extra.setColonia(tablaUsuarios.getSelectionModel().getSelectedItem().getColonia());
-             extra.setEdad("Edad: "+tablaUsuarios.getSelectionModel().getSelectedItem().getEdad());
-             extra.setMl(" M"+tablaUsuarios.getSelectionModel().getSelectedItem().getMza()+" L"+tablaUsuarios.getSelectionModel().getSelectedItem().getLote());
-             extra.setEmail(tablaUsuarios.getSelectionModel().getSelectedItem().getEmail());
-             AbrirVentana av = new AbrirVentana("/fxml/MasSuscriptores.fxml","Suscriptor");
+             AbrirVentana av = new AbrirVentana("/fxml/Asitencia.fxml","Suscriptor");
              new Thread(av).start();
              tablaUsuarios.getSelectionModel().clearSelection();
              BMas.setDisable(true);

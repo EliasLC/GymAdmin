@@ -1,9 +1,7 @@
 package com.mycompany.persistencia;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Collection;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -16,7 +14,10 @@ import javax.persistence.NamedQuery;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.xml.bind.annotation.XmlRootElement;
+import javax.xml.bind.annotation.XmlTransient;
+
 /**
+ *
  * @author elias
  */
 @Entity
@@ -46,6 +47,8 @@ public class TipoSuc implements Serializable {
     @JoinColumn(name = "TSUC_ADMID", referencedColumnName = "ADM_ID")
     @ManyToOne
     private Administrador tsucAdmid;
+    @OneToMany(mappedBy = "tsucId")
+    private Collection<PeriodoTiposuc> periodoTiposucCollection;
 
     public TipoSuc() {
     }
@@ -94,11 +97,15 @@ public class TipoSuc implements Serializable {
         this.tsucAdmid = tsucAdmid;
     }
 
-    
-   /* //Metodo para enlazar la realcion
-    @OneToMany(mappedBy = "primaryKey.tipoSuc", cascade = CascadeType.ALL)
-     private List<PeriodoSuc>  periodosSuc = new ArrayList<>();
-    */
+    @XmlTransient
+    public Collection<PeriodoTiposuc> getPeriodoTiposucCollection() {
+        return periodoTiposucCollection;
+    }
+
+    public void setPeriodoTiposucCollection(Collection<PeriodoTiposuc> periodoTiposucCollection) {
+        this.periodoTiposucCollection = periodoTiposucCollection;
+    }
+
     @Override
     public int hashCode() {
         int hash = 0;

@@ -11,6 +11,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/extra.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/TransaccionesRecepcionistasController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaCostos.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/InstructoresCombo.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Instruidos.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InsertarRecepcionista.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaPrecios.java
@@ -18,6 +19,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaRecepcionista.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaTrans.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/RegimenInstructor.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/EliminarCosto.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaInstructores.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/PreciosSuscripcionesController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/InstruidosController.java
@@ -31,7 +33,8 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Suscriptor.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/VisualizarSuscriptorController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaSuscripciones.java
-/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/PeriodoSucId.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/AsitenciaController.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InstructoresCombo.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/EstadisticasAdminController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Cambio.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/AbrirVentana.java
@@ -43,6 +46,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/ModIAdm.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/DataBase.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/MainController.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/IngresarController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/Ingresar.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/ModPrecios.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Administrador.java
@@ -55,6 +59,7 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/ModificarSuscripciones.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/CambiarPassController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/TipoSuc.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/PeriodoSusCombo.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Suscripcion.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/InstruidosId.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/validarEmail.java
@@ -64,16 +69,22 @@
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaInstruidos.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Conexion.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaTransaccionesRecep.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/tablaAsistencia.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/CambiarInfoAdminController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Stages.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/RegistrarSuscriptor.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/controllers/SplashController.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaSuscriptores.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/habilitarSuscripcion.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TablaSuscriptores.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/MainApp.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Asistencia.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/gymadmin/Validar.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/llenarTablaSuscripciones.java
-/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/PeriodoSuc.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/Direccion_INS.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InfoSuscriptores.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/EliminarRecepcionista.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/TipoSuscripcionesCombo.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/InsertarPrecio.java
+/home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/persistencia/PeriodoTiposuc.java
 /home/elias/NetBeansProjects/GymAdmin/src/main/java/com/mycompany/interacciondb/ModificarRecep.java

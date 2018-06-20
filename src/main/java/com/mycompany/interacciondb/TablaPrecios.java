@@ -11,7 +11,7 @@ public class TablaPrecios {
     private StringProperty duracion,  precio;
 
     
-    public TablaPrecios( String duracion, double precio){
+    public TablaPrecios( String duracion, float precio){
         this.duracion= new SimpleStringProperty(duracion);
         this.precio = new SimpleStringProperty(String.valueOf(precio));
     }

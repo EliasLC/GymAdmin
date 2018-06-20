@@ -46,6 +46,20 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Suscriptor.findBySUSTELCelular", query = "SELECT s FROM Suscriptor s WHERE s.sUSTELCelular = :sUSTELCelular")})
 public class Suscriptor implements Serializable {
 
+    /**
+     * @return the direccionsus
+     */
+    public Direccion_SUS getDireccionsus() {
+        return direccionsus;
+    }
+
+    /**
+     * @param direccionsus the direccionsus to set
+     */
+    public void setDireccionsus(Direccion_SUS direccionsus) {
+        this.direccionsus = direccionsus;
+    }
+
     private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -109,6 +123,10 @@ public class Suscriptor implements Serializable {
     
     @OneToMany(mappedBy = "primaryKey.sus", fetch = FetchType.LAZY)
      private List<Instruidos> instructor = new ArrayList<Instruidos>();
+
+     @OneToOne(mappedBy = "suscriptor",  
+              fetch = FetchType.LAZY, optional = false)
+        private Direccion_SUS direccionsus;
 
     
     public List<Instruidos> getInstructor() {

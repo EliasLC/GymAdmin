@@ -1,6 +1,7 @@
 package com.mycompany.interacciondb;
 import com.mycompany.persistencia.DataBase;
-import com.mycompany.persistencia.PeriodoSuc;
+import com.mycompany.persistencia.PeriodoTiposuc;
+
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -14,12 +15,11 @@ public class ModPrecios extends Task<Integer> {
 
     private int id;
     private String periodo;
-    private double costo;
-    private double viejocosto;
+    private float costo;
     
-    public ModPrecios(int id, String periodo,double viejocosto,double nuevocosto){
+    public ModPrecios(int id, String periodo,float nuevocosto){
         this.id=id; this.periodo=periodo;
-        this.costo=nuevocosto; this.viejocosto=viejocosto;
+        this.costo=nuevocosto; 
     }
     
         
@@ -39,14 +39,15 @@ public class ModPrecios extends Task<Integer> {
         try{
             EntityManager manager = DataBase.getEMF().createEntityManager();
             manager.getTransaction().begin();
-            Query result = manager.createQuery("SELECT p FROM PeriodoSuc p WHERE p.tipoSuc.tsucId= :id AND p.psDuracion= :dur");
+            Query result = manager.createQuery("SELECT p FROM PeriodoTiposuc p WHERE p.ptDuracion = :dur AND p.tsucId.tsucId = :id ");
             result.setParameter("id", id);
-            //result.setParameter("re", id);
             result.setParameter("dur", periodo);
-            PeriodoSuc ps = (PeriodoSuc) result.getSingleResult();
-                
-                ps.setPsCosto(costo);
+            List<PeriodoTiposuc> p = result.getResultList();  
+            if(p.size()>0){
+                PeriodoTiposuc er = p.get(0);
+                er.setPtPrecio(costo);
                 res=0;
+            }
             manager.getTransaction().commit();
             manager.close();
             

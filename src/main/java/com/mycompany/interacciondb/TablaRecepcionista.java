@@ -1,13 +1,10 @@
 package com.mycompany.interacciondb;
-
 import java.time.LocalDate;
 import java.time.Month;
 import java.time.Period;
 import java.util.Calendar;
 import java.util.Date;
-
 /**
- *
  * @author elias
  */
 public class TablaRecepcionista {
