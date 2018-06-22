@@ -9,12 +9,13 @@
     <class>com.mycompany.persistencia.Recepcionista</class>
     <class>com.mycompany.persistencia.TransaccionesRecep</class>
     <class>com.mycompany.persistencia.RutinaSus</class>
-    <class>com.mycompany.persistencia.Suscriptor</class>
     <class>com.mycompany.persistencia.Administrador</class>
     <class>com.mycompany.persistencia.MensajeSusIns</class>
     <class>com.mycompany.persistencia.RegimenSus</class>
     <class>com.mycompany.persistencia.TipoSuc</class>
     <class>com.mycompany.persistencia.PeriodoTiposuc</class>
+    <class>com.mycompany.persistencia.Asistencia</class>
+    <class>com.mycompany.persistencia.Suscriptor</class>
     <properties>
       <property name="javax.persistence.jdbc.url" value="jdbc:mysql://189.252.61.119:3306/PROYECTON?zeroDateTimeBehavior=convertToNull"/>
       <property name="javax.persistence.jdbc.user" value="Elias"/>

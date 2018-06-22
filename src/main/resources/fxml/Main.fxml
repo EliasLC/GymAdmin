@@ -45,7 +45,7 @@
                               <Line endX="71.0" startX="-100.0" stroke="WHITE" />
                               <JFXButton fx:id="adminSuscripcion" prefHeight="53.0" prefWidth="169.0" style="-fx-background-color: #395368;" text="Administrar" textFill="WHITE">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@/images/update.png" />
                                        </image>
@@ -60,7 +60,7 @@
                               </JFXButton>
                               <JFXButton fx:id="adminEstadisticas" prefHeight="53.0" prefWidth="170.0" style="-fx-background-color: #395368;" text="Estadisticas" textFill="WHITE">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@/images/analysis.png" />
                                        </image>
@@ -107,7 +107,7 @@
                               <Line endX="71.0" startX="-100.0" stroke="WHITE" />
                               <JFXButton fx:id="suscriptorVisualizar" prefHeight="53.0" prefWidth="169.0" style="-fx-background-color: #395368;" text="Visualizar" textFill="WHITE">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
                                           <Image url="@/images/update.png" />
                                        </image>
@@ -120,11 +120,11 @@
                                     <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="suscriptoresEstadisticas" prefHeight="53.0" prefWidth="170.0" style="-fx-background-color: #395368;" text="Estadisticas" textFill="WHITE">
+                              <JFXButton fx:id="IngresarSuscriptores" layoutX="10.0" layoutY="97.0" prefHeight="53.0" prefWidth="170.0" style="-fx-background-color: #395368;" text="Ingresar" textFill="WHITE">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@/images/analysis.png" />
+                                          <Image url="@/images/add-friend.png" />
                                        </image>
                                        <viewport>
                                           <Rectangle2D />
@@ -132,14 +132,14 @@
                                     </ImageView>
                                  </graphic>
                                  <font>
-                                    <Font size="17.0" />
+                                    <Font size="18.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="IngresarSuscriptores" layoutX="10.0" layoutY="97.0" prefHeight="53.0" prefWidth="170.0" style="-fx-background-color: #395368;" text="Ingresar" textFill="WHITE">
+                              <JFXButton fx:id="suscriptoresEstadisticas" prefHeight="53.0" prefWidth="170.0" style="-fx-background-color: #395368;" text="Estadisticas" textFill="WHITE">
                                  <graphic>
-                                    <ImageView fitHeight="20.0" fitWidth="20.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
+                                    <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="-5.0" pickOnBounds="true" preserveRatio="true">
                                        <image>
-                                          <Image url="@/images/add-user.png" />
+                                          <Image url="@/images/analysis.png" />
                                        </image>
                                        <viewport>
                                           <Rectangle2D />

@@ -5,7 +5,6 @@ import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.AbrirVentana;
 import com.mycompany.interacciondb.TablaSuscriptores;
 import com.mycompany.interacciondb.datos;
-import com.mycompany.interacciondb.extra;
 import com.mycompany.interacciondb.llenarTablaSuscriptores;
 import java.net.URL;
 import java.util.ResourceBundle;
@@ -54,6 +53,7 @@ public class VisualizarSuscriptorController implements Initializable {
         BMas.setOnAction((e)->{
             
              datos.setId(tablaUsuarios.getSelectionModel().getSelectedItem().getId());
+             datos.setNombre(tablaUsuarios.getSelectionModel().getSelectedItem().getNombre());
              AbrirVentana av = new AbrirVentana("/fxml/Asitencia.fxml","Suscriptor");
              new Thread(av).start();
              tablaUsuarios.getSelectionModel().clearSelection();
@@ -76,6 +76,7 @@ public class VisualizarSuscriptorController implements Initializable {
             
             if(newValue != null){
                 Tbuscar.setDisable(true); BMas.setDisable(false); BActualizar.setDisable(true);
+                datos.setId(tablaUsuarios.getSelectionModel().getSelectedItem().getId());
             }
         }); 
          

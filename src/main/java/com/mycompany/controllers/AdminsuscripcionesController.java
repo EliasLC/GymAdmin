@@ -179,7 +179,7 @@ public class AdminsuscripcionesController implements Initializable {
                            break;
                        case 1:
                            System.out.println("No se encontro");
-                           Alertas.error("Error modificacion", "Registro no encontrado", "Ell tipo de suscripcion seleccionado no se encuentra en la base de datos.");
+                           Alertas.error("Error modificacion", "Registro no encontrado", "El tipo de suscripcion seleccionado no se encuentra en la base de datos.");
                            llenarTabla();
                            break;
                        case 2:
@@ -203,7 +203,7 @@ public class AdminsuscripcionesController implements Initializable {
         BEliminar.setOnAction((e)->{
             if(tablaSuscripcion.getSelectionModel().getSelectedItem()!=null){
                 Optional<ButtonType> result = pregunta("Confirmacion de eliminacion",
-                        "¿Desea eliminar el elemnto seleccionado","").showAndWait();
+                        "¿Desea eliminar el elemento seleccionado","").showAndWait();
                 if(result.get() == ButtonType.OK){
                  bloquear(true); BEliminar.setDisable(true); BModificar.setDisable(true);
                  progTrans.setVisible(true);

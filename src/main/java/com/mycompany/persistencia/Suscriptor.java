@@ -1,12 +1,15 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.mycompany.persistencia;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Date;
 import java.util.List;
 import javax.persistence.Basic;
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -21,7 +24,6 @@ import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
 import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.XmlTransient;
 
 /**
  *
@@ -45,6 +47,20 @@ import javax.xml.bind.annotation.XmlTransient;
     , @NamedQuery(name = "Suscriptor.findBySusTelm", query = "SELECT s FROM Suscriptor s WHERE s.susTelm = :susTelm")
     , @NamedQuery(name = "Suscriptor.findBySUSTELCelular", query = "SELECT s FROM Suscriptor s WHERE s.sUSTELCelular = :sUSTELCelular")})
 public class Suscriptor implements Serializable {
+
+    /**
+     * @return the instructor
+     */
+    public List<Instruidos> getInstructor() {
+        return instructor;
+    }
+
+    /**
+     * @param instructor the instructor to set
+     */
+    public void setInstructor(List<Instruidos> instructor) {
+        this.instructor = instructor;
+    }
 
     /**
      * @return the direccionsus
@@ -96,12 +112,6 @@ public class Suscriptor implements Serializable {
     private String susTelm;
     @Column(name = "SUS_TELCelular")
     private String sUSTELCelular;
-    @OneToOne(cascade = CascadeType.ALL, mappedBy = "suscriptor")
-    private RegimenSus regimenSus;
-    @OneToMany(mappedBy = "sucSusid")
-    private Collection<Suscripcion> suscripcionCollection;
-    @OneToMany(mappedBy = "msiSusid")
-    private Collection<MensajeSusIns> mensajeSusInsCollection;
 
     public Suscriptor() {
     }
@@ -110,6 +120,13 @@ public class Suscriptor implements Serializable {
         this.susId = susId;
     }
     
+     @OneToMany(mappedBy = "primaryKey.sus", fetch = FetchType.LAZY)
+     private List<Instruidos> instructor = new ArrayList<Instruidos>();
+
+     @OneToOne(mappedBy = "suscriptor",  
+              fetch = FetchType.LAZY, optional = false)
+        private Direccion_SUS direccionsus;
+
 
     public Suscriptor(Integer susId, String susContra, String susEmail, String susNom, String sUSAPat, String sUSAMat, Date sUSFechaNA) {
         this.susId = susId;
@@ -120,23 +137,7 @@ public class Suscriptor implements Serializable {
         this.sUSAMat = sUSAMat;
         this.sUSFechaNA = sUSFechaNA;
     }
-    
-    @OneToMany(mappedBy = "primaryKey.sus", fetch = FetchType.LAZY)
-     private List<Instruidos> instructor = new ArrayList<Instruidos>();
 
-     @OneToOne(mappedBy = "suscriptor",  
-              fetch = FetchType.LAZY, optional = false)
-        private Direccion_SUS direccionsus;
-
-    
-    public List<Instruidos> getInstructor() {
-        return instructor;
-    }
-
-    public void setInstructor(List<Instruidos> instructor) {
-        this.instructor = instructor;
-    }
-    
     public Integer getSusId() {
         return susId;
     }
@@ -233,32 +234,6 @@ public class Suscriptor implements Serializable {
         this.sUSTELCelular = sUSTELCelular;
     }
 
-    public RegimenSus getRegimenSus() {
-        return regimenSus;
-    }
-
-    public void setRegimenSus(RegimenSus regimenSus) {
-        this.regimenSus = regimenSus;
-    }
-
-    @XmlTransient
-    public Collection<Suscripcion> getSuscripcionCollection() {
-        return suscripcionCollection;
-    }
-
-    public void setSuscripcionCollection(Collection<Suscripcion> suscripcionCollection) {
-        this.suscripcionCollection = suscripcionCollection;
-    }
-
-    @XmlTransient
-    public Collection<MensajeSusIns> getMensajeSusInsCollection() {
-        return mensajeSusInsCollection;
-    }
-
-    public void setMensajeSusInsCollection(Collection<MensajeSusIns> mensajeSusInsCollection) {
-        this.mensajeSusInsCollection = mensajeSusInsCollection;
-    }
-
     @Override
     public int hashCode() {
         int hash = 0;
@@ -283,5 +258,5 @@ public class Suscriptor implements Serializable {
     public String toString() {
         return "com.mycompany.persistencia.Suscriptor[ susId=" + susId + " ]";
     }
-
+    
 }

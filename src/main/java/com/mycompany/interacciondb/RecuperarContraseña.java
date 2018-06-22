@@ -53,23 +53,20 @@ public class RecuperarContraseña extends Task<Integer> {
     
     //Metodo para comprobar que el usuario existe
     public boolean seEncuentra(){
+        boolean res =false;
         EntityManager manager = DataBase.getEMF().createEntityManager();
         manager.getTransaction().begin();
         Query result;
         result = manager.createQuery("SELECT a.admContra FROM Administrador a WHERE a.admEmail = :user");
         result.setParameter("user",destino);
         List<String>  re = result.getResultList();
-        pass = re.get(0);
-        for (int i=0; i<re.size(); i++){
-            System.out.println(re.get(i));
+        if(re.size()>0){
+            pass = re.get(0);
+            res=true;
         }
         manager.getTransaction().commit();
         manager.close();
-        if(re.isEmpty()){
-            return false;
-        }
-       
-        return true;      
+        return res;      
     }
     
     private boolean mandarEmail(){

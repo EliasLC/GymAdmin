@@ -6,6 +6,7 @@ import com.jfoenix.controls.JFXTextField;
 import com.mycompany.gymadmin.Alertas;
 import com.mycompany.gymadmin.Cambio;
 import com.mycompany.gymadmin.Datos;
+import com.mycompany.gymadmin.Validar;
 import com.mycompany.interacciondb.ModIAdm;
 import com.mycompany.interacciondb.RecuperarContraseña;
 import com.mycompany.persistencia.Administrador;
@@ -45,6 +46,9 @@ public class CambiarInfoAdminController implements Initializable {
     
     @Override
     public void initialize(URL url, ResourceBundle rb) {
+        Validar.TextFieldLetras(nomAdm); Validar.TextFieldLetras(apatAdm);
+        Validar.TextFieldLetras(amatAdm); Validar.TextFieldNumeros(tfijAdm);
+        Validar.TextFieldNumeros(tmovAdm);
         componentes(true);
         datosAdmin da = new datosAdmin();
         llenarInfo(da);

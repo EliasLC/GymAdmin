@@ -54,7 +54,7 @@ public class ModificarRecep extends Task<Integer> {
                 Recepcionista r = rep.get(0);
                 r.setRecNom(nom); r.setRecApat(paterno); r.setRecAmat(materno);
                 r.setRecEmail(email); r.setRecFna(nacimiento()); r.setRecTelc(telfijo);
-                r.setRecTelm(telmovil); 
+                r.setRecTelm(telmovil);  r.setRecStatus(1);
                 r.getDireccionrec().setColonia(colonia); r.getDireccionrec().setManzana(manzana);
                 r.getDireccionrec().setLote(lote);
                 res=1;

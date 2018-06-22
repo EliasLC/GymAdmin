@@ -53,7 +53,7 @@ public class AsitenciaController implements Initializable {
 
     @Override
     public void initialize(URL url,  ResourceBundle rb) {
-        llenarTabla(); cerrarVentana();
+        llenarTabla(); cerrarVentana(); LNombre.setText(datos.getNombre());
     }    
     
     private void cerrarVentana(){
@@ -91,8 +91,8 @@ public class AsitenciaController implements Initializable {
             try{ 
             EntityManager manager = DataBase.getEMF().createEntityManager();
              manager.getTransaction().begin();
-             Query query = manager.createQuery("SELECT NEW com.mycompany.interacciondb.tablaAsistencia(a.fecha) FROM Asistencia a WHERE a.suscriptor.susId = :id");
-             query.setParameter("id", idM);
+             Query query = manager.createQuery("SELECT NEW com.mycompany.interacciondb.tablaAsistencia (a.fecha) FROM Asistencia a WHERE a.susId.susId = :id");
+             query.setParameter("id", datos.getId());
              re = FXCollections.observableArrayList(query.getResultList());
              manager.getTransaction().commit();
              manager.close();

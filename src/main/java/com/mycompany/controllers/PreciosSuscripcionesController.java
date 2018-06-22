@@ -61,7 +61,7 @@ public class PreciosSuscripcionesController implements Initializable {
     @Override
     public void initialize(URL url, ResourceBundle rb) {
        ObservableList<String> opciones = FXCollections.observableArrayList();
-       opciones.add( "1 Semanas"); opciones.add("2 Semanas"); opciones.add("1 Mes");
+       opciones.add( "1 Semana"); opciones.add("2 Semanas"); opciones.add("1 Mes");
        opciones.add("3 Meses"); opciones.add("6 meses"); opciones.add("Año");
        ComPTiempo.setItems(opciones); LSuscripcion.setText(LSuscripcion.getText()+" "+datos.getNombre());
        llenar(); Validar.TextFieldNumeros(TCosto); Validar.setTextFieldLimit(TCosto, 4);
